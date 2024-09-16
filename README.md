@@ -1,5 +1,3 @@
-¡Claro! Aquí tienes una propuesta de README.md para un curso de DAW en UNIR, traducida al inglés y adaptada para GitHub:
-
 ## DAW Course at UNIR University: A Comprehensive Guide
 
 ### Overview
