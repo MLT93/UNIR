@@ -9,7 +9,7 @@ This repository provides a comprehensive overview of the **Higher-Level Training
 * **Development Environments:** Provides hands-on experience with popular development tools and IDEs.
 * **Communication Skills in a Foreign Language:** Focuses on technical communication and presentation skills in English.
 * **Personal Employability Itinerary:** Guides students in developing their professional profiles and job search strategies.
-* **Markup Languages and Information Management Systems:** Covers HTML, CSS, and content management systems.
+* **Markup Languages and Management Systems:** Covers HTML, CSS, and content management systems.
 * **Programming:** Delves into programming languages such as JavaScript, Python, and PHP.
 * **Computer Systems:** Explores computer architecture, operating systems, and networking.
 
@@ -48,6 +48,9 @@ For any questions or inquiries, please contact join our Discord server: [Mark Le
 * **Structure:** Organize your repository into subdirectories to keep your files well-structured and easy to find.
 * **Images and Diagrams:** Use images and diagrams to visually represent concepts and improve readability.
 * **Markdown Features:** Take advantage of Markdown features like headings, lists, code blocks, and links to create a well-formatted document.
+
+### Environments
+Create a `.env` like `.env.example` to save all your personal information in your course, such as Office365 username and password, your JOIN credentials, etc.
 
 By following these guidelines, you can create a comprehensive and informative README.md file that will serve as a valuable resource for both current and future students of the DAW course at UNIR.
  

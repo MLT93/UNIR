@@ -1,0 +1,37 @@
+{
+  "name": "unir",
+  "version": "1.0.0",
+  "description": "DAW Course at UNIR University: A Comprehensive Guide",
+  "main": "./src/*",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MLT93/UNIR.git"
+  },
+  "keywords": [
+    "DAW",
+    "web",
+    "development",
+    "UNIR",
+    "programming",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Python",
+    "PHP",
+    "databases",
+    "development",
+    "environment"
+  ],
+  "author": "Marcos Lambir Torres",
+  "license": "SEE LICENSE IN /UNIR",
+  "bugs": {
+    "url": "https://github.com/MLT93/UNIR/issues"
+  },
+  "homepage": "https://github.com/MLT93/UNIR#readme",
+  "dependencies": {
+    "prettier": "3.3.3"
+  }
+}
