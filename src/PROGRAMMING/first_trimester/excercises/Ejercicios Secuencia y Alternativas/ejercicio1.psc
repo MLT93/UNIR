@@ -1,11 +1,11 @@
 Algoritmo ejercicio1
-	// Leer por consola dos números enteros y mostrar suma, resta, producto, division y resto
+	// Leer por consola dos nï¿½meros enteros y mostrar suma, resta, producto, division y resto
 	
 	// Definimos las variables
 	Definir entero1, entero2, suma, resta, producto, resto Como Entero;
 	Definir division Como Real;
 	
-	// Inicialiamos las variables, en este caso todas numéricas a 0
+	// Inicializamos las variables, en este caso todas numï¿½ricas a 0
 	entero1 = 0;
 	entero2 = 0;
 	suma = 0;
@@ -14,14 +14,14 @@ Algoritmo ejercicio1
 	resto = 0;
 	division = 0;
 	
-	// Capturamos los dos números enteros via teclado/consola
-	Escribir "Programa para calcular la suma, resta, producto, división y resto de dos enteros.";
-	Escribir "Introduce el primer número entero:";
+	// Capturamos los dos nï¿½meros enteros via teclado/consola
+	Escribir "Programa para calcular la suma, resta, producto, divisiï¿½n y resto de dos enteros.";
+	Escribir "Introduce el primer nï¿½mero entero:";
 	Leer entero1;
-	Escribir "Introduce el segundo número entero:";
+	Escribir "Introduce el segundo nï¿½mero entero:";
 	Leer entero2;
 	
-	// Hacemos todos los cálculos
+	// Hacemos todos los cÃ¡lculos
 	suma = entero1 + entero2;
 	resta = entero1 - entero2;
 	producto = entero1 * entero2;

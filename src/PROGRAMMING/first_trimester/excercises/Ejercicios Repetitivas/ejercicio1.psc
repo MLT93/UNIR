@@ -1,35 +1,35 @@
 Algoritmo ejercicio1
-	// Leer un número tras otro hasta encontrar 0. Mostrar cuantos 
-	// números han sido procesados, cual es la suma y cual es la media.
+	// Leer un nï¿½mero tras otro hasta encontrar 0. Mostrar cuantos 
+	// nï¿½meros han sido procesados, cual es la suma y cual es la media.
 	
 	// Definimos las variables 
 	Definir numero_entrada, contador, suma Como Entero;
 	Definir media Como Real;
 	
-	// Inicializamos las variables numéricas a 0
+	// Inicializamos las variables numï¿½ricas a 0
 	numero_entrada = 0;
 	contador = 0;
-	suma = 0;
+	suma = 0;kw
 	media = 0;
 	
 	// Pedimos la primera entrada
-	Escribir "Programa para calcular la media y suma de un conjunto de números.";
-	Escribir "Introduce el primer número:";
+	Escribir "Programa para calcular la media y suma de un conjunto de nï¿½meros.";
+	Escribir "Introduce el primer nï¿½mero:";
 	Leer numero_entrada;
 	
 	// Comenzamos el bucle, utilizamos una estructura Mientras que
-	// se ejecutará siempre que el número introducido sea distinto
-	// a 0. En cada iteración se pedirá el número.
+	// se ejecutarï¿½ siempre que el nï¿½mero introducido sea distinto
+	// a 0. En cada iteraciï¿½n se pedirï¿½ el nï¿½mero.
 	Mientras numero_entrada <> 0 Hacer
 		contador = contador + 1;
 		suma = suma + numero_entrada;
 		media = suma / contador;
-		Escribir "Introduce otro número:";
+		Escribir "Introduce otro nï¿½mero:";
 		Leer numero_entrada;
 	Fin Mientras
 	
 	// Mostramos el resultado y finalizamos el programa
-	Escribir "Se han introducido ", contador, " números.";
+	Escribir "Se han introducido ", contador, " nï¿½meros.";
 	Escribir "La media es ", media, " y la suma es ", suma;
 	
 FinAlgoritmo
