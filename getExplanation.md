@@ -1,4 +1,4 @@
-Siguiendo el siguiente formato, explícame detalladamente "¿Qué es Bit, Byte, sus unidades y cómo se calculan distintos sistemas numéricos utilizando el Teorema Fundamental de la Numeración? Realiza un ejemplo que pueda entender.":
+Siguiendo el siguiente formato, explícame detalladamente "¿Qué diferencias hay entre Binario y BCD? Realiza un ejemplo que pueda entender.":
 
 # **`SFMC y sus características`**
 
