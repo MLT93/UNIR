@@ -2,7 +2,8 @@ Siguiendo el siguiente formato, explícame detalladamente "¿Qué diferencias ha
 
 # **`SFMC y sus características`**
 
-#### Introducción: 
+#### Introducción:
+
 Salesforce Marketing Cloud (SFMC) es una plataforma de **marketing automation** diseñada para gestionar y optimizar las interacciones con los clientes a través de diversos canales como correo electrónico, SMS, redes sociales y web. Es ampliamente utilizada por empresas para crear experiencias personalizadas y relevantes para sus clientes a lo largo de todo el ciclo de vida del cliente.
 
 1. ### **`Características principales de SFMC`**:
@@ -141,7 +142,7 @@ Salesforce Marketing Cloud (SFMC) es una plataforma de **marketing automation** 
        - Crear audiencias para campañas de email marketing, publicidad y más.
        - Segmentación dinámica para personalizar la experiencia del cliente.
 
-   ---
+   ***
 
    - **`Einstein`**
      La inteligencia artificial (IA) de Salesforce que se integra con Marketing Cloud para mejorar la personalización y automatización.
@@ -154,7 +155,7 @@ Salesforce Marketing Cloud (SFMC) es una plataforma de **marketing automation** 
        - Predicción de comportamientos del cliente, como probabilidad de conversión o abandono.
        - Recomendación de productos en tiempo real.
 
-   ---
+   ***
 
    - **`AppExchange`**
      Marketplace de Salesforce donde se pueden encontrar aplicaciones de terceros que se integran con SFMC.
@@ -166,7 +167,7 @@ Salesforce Marketing Cloud (SFMC) es una plataforma de **marketing automation** 
      - **Aplicaciones**:
        - Añadir funcionalidades como análisis avanzados o integraciones con otros sistemas.
 
-   ---
+   ***
 
    - **`Platform`**
      Infraestructura subyacente de SFMC que permite la integración y personalización de herramientas y soluciones.
@@ -179,15 +180,15 @@ Salesforce Marketing Cloud (SFMC) es una plataforma de **marketing automation** 
        - Crear soluciones personalizadas para satisfacer necesidades específicas.
        - Integración con sistemas como CRM, eCommerce, ERP, entre otros.
 
-   ---
+   ***
 
 2. ### **`Diferencia entre "Studio" y "Builder"`**:
 
    - **`Studio`**: Herramientas enfocadas en la **creación y ejecución de contenido** a través de canales específicos como correo electrónico, redes sociales, web o móvil. Estas herramientas se centran en la **implementación y gestión de campañas**.
 
      - **Ejemplo**: Email Studio se utiliza para crear y enviar correos electrónicos, mientras que Mobile Studio gestiona mensajes móviles.
-  
-   ---
+
+   ***
 
    - **`Builder`**: Herramientas centradas en el **diseño de estrategias, personalización y análisis**. Están diseñadas para gestionar **recorridos del cliente**, crear **audiencias** y analizar resultados.
 
