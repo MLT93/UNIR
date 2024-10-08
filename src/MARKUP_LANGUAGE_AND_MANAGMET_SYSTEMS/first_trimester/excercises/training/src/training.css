@@ -1,0 +1,99 @@
+/* SETS */
+@font-face {
+  /* Set Typography */
+  font-family: 'Australia VIC WA NT';
+  src: url(./assets/font/EduAUVICWANTGuides-Medium.ttf) format('woff');
+  font-weight: 400;
+}
+
+:root {
+  /* Set Vars & Set Font */
+  --color-white: rgb(255, 255, 255);
+  --color-night: #0e0e0e;
+
+  --primary-font: 'Australia VIC WA NT', Helvetica;
+  font-size: 16px;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  /* Set General Paddings, Margins & Set Scrollbar */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+
+  ::-webkit-scrollbar {
+    width: auto;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: darkslategray;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.4375rem black;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Set Theme */
+  :root {
+    --color-white: rgb(255, 255, 255);
+    --color-night: #0e0e0e;
+  }
+}
+
+/* CREATIONS */
+body {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'nav    nav    nav'
+    'main   main   main'
+    'aside  aside  aside'
+    'footer footer footer';
+  grid-template-rows: 5rem 3rem auto 3rem 5rem;
+
+  min-height: 100dvh;
+  font-size: 100%;
+  background-color: var(--smoke-white);
+  font-family: var(--primary-font);
+  color: var(--black);
+}
+
+li {
+  list-style-type: unset;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  grid-area: header;
+}
+
+nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: main;
+}
+
+aside {
+  grid-area: aside;
+}
+
+footer {
+  grid-area: footer;
+}
+
+@media (width >= 1024px) {
+}
