@@ -30,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/MLT93/UNIR/issues"
   },
-  "homepage": "https://github.com/MLT93/UNIR#readme",
-  "dependencies": {
-    "prettier": "3.3.3"
-  }
+  "homepage": "https://github.com/MLT93/UNIR#readme"
 }
