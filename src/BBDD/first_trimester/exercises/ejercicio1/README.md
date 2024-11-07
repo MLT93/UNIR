@@ -37,8 +37,8 @@ Basándonos en los requisitos, identificaremos las **entidades** necesarias y su
      - `precio_unitario` (Decimal).
    - **Tipo de atributos**: Todos son **simples**.
 
-3. **LíneaFactura** (para representar los productos incluidos en una factura)
-   - **Atributo clave:** `NúmeroLínea` (clave primaria compuesta por `num_factura` + `cod_producto` en el esquema relacional).
+3. **linea_factura** (para representar los productos incluidos en una factura)
+   - **Atributo clave:** `num_linea_factura` (clave primaria compuesta por `num_factura` + `cod_producto` en el esquema relacional).
    - **Atributos**:
      - `cantidad` (Entero).
      - `importe_linea` (Decimal) - Atributo **derivado**, calculado como `cantidad * precio_unitario`.
@@ -47,22 +47,22 @@ Basándonos en los requisitos, identificaremos las **entidades** necesarias y su
 
 ### Paso 2: Crear Relaciones y Cardinalidades
 
-1. **Factura -> Almacenar LíneaFactura**:
-   - Relación **1:N** (una factura puede tener muchas líneas, pero cada línea pertenece a una sola factura).
-   - En el esquema relacional, `num_factura` será una **clave foránea** en **LíneaFactura**.
+1. **Factura -> almacenar linea_factura**:
+   - Relación **1:N** (una factura puede almacenar muchas líneas, pero cada línea pertenece a una sola factura).
+   - En el esquema relacional, `num_factura` será una **clave foránea** en **linea_factura**.
 
-2. **Almacenar LíneaFactura -> Producto**:
-   - Relación **N:1** (una línea de factura contiene un solo producto, pero un producto puede aparecer en muchas líneas de diferentes facturas).
-   - En el esquema relacional, `cod_producto` será una **clave foránea** en **LíneaFactura**.
+2. **almacenar linea_factura -> Producto**:
+   - Relación **N:1** (una línea de factura puede almacenar un solo producto, pero un producto puede aparecer en muchas líneas de diferentes facturas).
+   - En el esquema relacional, `cod_producto` será una **clave foránea** en **linea_factura**.
 
-En el diagrama E/R, **LíneaFactura** se puede representar como una relación (en forma de diamante) que conecta las entidades Factura y Producto. En este caso, LíneaFactura no solo es una relación, sino que también actúa como una entidad que almacena información adicional sobre cada producto en cada factura, como la cantidad y el importe de la línea.
+En el diagrama E/R, **linea_factura** se puede representar como una Entidad de relación (en forma de diamante) que conecta las entidades Factura y Producto. En este caso, **linea_factura no solo es una relación, sino que también actúa como una entidad que almacena información adicional sobre cada producto** en cada factura, como la cantidad y el importe de la línea.
 
 ### Paso 3: Diagrama E/R con Cardinalidades
 
 En el diagrama E/R:
 
-- **Factura** se conecta a **LíneaFactura** con una relación de **1:N**. Esto implica que el `num_factura` será una clave foránea en **LíneaFactura** en la implementación relacional.
-- **Producto** se conecta a **LíneaFactura** con una relación de **1:N**. Esto implica que el `cod_producto` será una clave foránea en **LíneaFactura** en la implementación relacional.
+- **Factura** se conecta a **linea_factura** con una relación de **1:N**. Esto implica que el `num_factura` será una clave foránea en **linea_factura** en la implementación relacional.
+- **Producto** se conecta a **linea_factura** con una relación de **1:N**. Esto implica que el `cod_producto` será una clave foránea en **linea_factura** en la implementación relacional.
 
 ---
 
@@ -75,7 +75,7 @@ Factura (num_factura, dni, nombre_cliente, fecha, importe_total)
    │
    │ 1:N
    │
-Relación "Almacenar" [donde deriva LíneaFactura (num_linea_factura, cantidad, importe_linea) al ser una relación N:M]
+Relación "Almacenar" [donde deriva linea_factura (num_linea_factura, cantidad, importe_linea) al ser una relación N:M]
    │
    │ N:1
    │
@@ -84,12 +84,12 @@ Producto (cod_producto, nombre_producto, precio_unitario)
 
 En este diseño:
 
-- `num_factura` y `cod_producto` actuarán como **claves foráneas implícitas** en la entidad **LíneaFactura** en el modelo relacional.
-- **LíneaFactura** se comporta como la tabla intermedia para la relación entre **Factura** y **Producto** y también representa las **líneas de factura**.
+- `num_factura` y `cod_producto` actuarán como **claves foráneas implícitas** en la entidad **linea_factura** en el modelo relacional.
+- **linea_factura** se comporta como la tabla intermedia para la relación entre **Factura** y **Producto** y también representa las **líneas de factura**.
 
 ### Resumen
 
 Este enfoque en el diagrama E/R implica los siguientes pasos al migrar a un esquema relacional:
 
 1. **Factura** y **Producto** se mantienen como tablas independientes con sus claves primarias (`num_factura` y `cod_producto`).
-2. **LíneaFactura** contiene las claves foráneas `num_factura` y `cod_producto` para representar las relaciones de **1:N** y **N:1** respectivamente.
+2. **linea_factura** contiene las claves foráneas `num_factura` y `cod_producto` para representar las relaciones de **1:N** y **N:1** respectivamente.
