@@ -19,7 +19,7 @@
         <mxCell id="zIQO2QtqG7fg5_mSGysL-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="zIQO2QtqG7fg5_mSGysL-4" target="zIQO2QtqG7fg5_mSGysL-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="zIQO2QtqG7fg5_mSGysL-4" value="almacenar&lt;br&gt;linea_factura" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+        <mxCell id="zIQO2QtqG7fg5_mSGysL-4" value="almacenar" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="360" y="352" width="130" height="84" as="geometry" />
         </mxCell>
         <mxCell id="zIQO2QtqG7fg5_mSGysL-14" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="zIQO2QtqG7fg5_mSGysL-15" edge="1">
