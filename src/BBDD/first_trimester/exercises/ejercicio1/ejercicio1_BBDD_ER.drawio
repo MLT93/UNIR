@@ -199,7 +199,7 @@
             <mxPoint x="426" y="327" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_AfUfkM7JY_zOvTRJxWH-9" value="cantidad" style="ellipse;whiteSpace=wrap;html=1;rotation=-90;" parent="1" vertex="1">
+        <mxCell id="_AfUfkM7JY_zOvTRJxWH-9" value="cantidad_producto" style="ellipse;whiteSpace=wrap;html=1;rotation=-90;" parent="1" vertex="1">
           <mxGeometry x="361.5" y="242.5" width="129" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_AfUfkM7JY_zOvTRJxWH-10" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="_AfUfkM7JY_zOvTRJxWH-11" edge="1">
