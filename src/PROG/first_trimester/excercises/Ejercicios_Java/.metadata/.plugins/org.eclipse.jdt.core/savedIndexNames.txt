@@ -1,0 +1,3 @@
+INDEX VERSION 1.134+/home/marcoslt93/Dev/UNIR/src/PROG/first_trimester/excercises/Ejercicios_Java/.metadata/.plugins/org.eclipse.jdt.core
+2054852854.index
+1362992044.index
