@@ -181,7 +181,7 @@
         <mxCell id="zIQO2QtqG7fg5_mSGysL-61" value="(1, n)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="531" y="835" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="_AfUfkM7JY_zOvTRJxWH-5" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;DB Tienda&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="_AfUfkM7JY_zOvTRJxWH-5" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;DB Tienda&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="54" y="90" width="96" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_AfUfkM7JY_zOvTRJxWH-6" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="_AfUfkM7JY_zOvTRJxWH-7" edge="1">
@@ -309,6 +309,12 @@
         </mxCell>
         <mxCell id="2IwcuPVNw8esXmN2UqxO-30" value="&lt;b&gt;&lt;u&gt;num_factura&lt;/u&gt;&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="1">
           <mxGeometry x="44.5" y="710" width="135" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2IwcuPVNw8esXmN2UqxO-31" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Diagrama Peter Chen&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=4" vertex="1" parent="1">
+          <mxGeometry x="357" y="140" width="138" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2IwcuPVNw8esXmN2UqxO-32" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Diagrama Miguel et al&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=4" vertex="1" parent="1">
+          <mxGeometry x="347" y="630" width="148" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
