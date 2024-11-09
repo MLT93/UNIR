@@ -78,3 +78,8 @@ Relación "Almacenar" [donde deriva linea_factura (num_linea_factura, cantidad_p
    │
 Producto (cod_producto, nombre_producto, precio_unitario)
 ```
+### Comentarios
+
+Después de una lectura exhaustiva también se podría elaborar otra interpretación que sería compuesta por **FACTURA** y **LINEA_FACTURA** relacionándolas con **almacenar**. Se debería especificar con el cliente las necesidades oportunas.
+
+Se entrega este boceto conceptual como wireframe preliminar.
