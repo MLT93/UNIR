@@ -22,7 +22,7 @@ Apunta los comandos utilizados para cada ejercicio.
      pwd
      ```
 
-2. Navega al directorio raíz de tu sistema de archivos.
+2. Navega al directorio raíz de tu sistema de archivos (del PC).
 
    - **Windows**:
 
@@ -105,9 +105,25 @@ Apunta los comandos utilizados para cada ejercicio.
      ```
 
    - **Linux**:
-
+     
+     normal
      ```bash
      ls
+     ```
+
+     especifica detallada con archivos ocultos y lectura para humano (h)
+     ```bash
+     ls -lha
+     ```
+
+     alias de ls -la
+     ```bash
+     ll
+     ```
+
+     alias de ls -la con lectura para humano (h). Equivalente a ls -lha
+     ```bash
+     ll -h
      ```
 
 ---
@@ -225,6 +241,7 @@ Apunta los comandos utilizados para cada ejercicio.
 
    - **Linux**:
 
+     eliminación básica de archivos. Pide confirmación para cada borrado
      ```bash
      rm styles.css
      ```
@@ -248,15 +265,21 @@ Apunta los comandos utilizados para cada ejercicio.
 
    - **Linux**:
 
+     eliminación recursiva de carpetas con pregunta. Elimina también todos los subdirectorios y archivos
      ```bash
-     rm -r javascript
+     rm -ri javascript
+     ```
+
+     eliminación recursiva y forzada sin pedir confirmación. Elimina también todos los subdirectorios y archivos
+     ```bash
+     rm -rf javascript
      ```
 
 ---
 
 ### Ejercicio 5: Exploración de Ficheros
 
-1. Verifica el contenido del archivo **index.html** que creaste anteriormente.
+1. Verifica el contenido del archivo **index.html** que creaste anteriormente leyéndolo por pantalla.
 
    - **Windows**:
 
@@ -282,8 +305,14 @@ Apunta los comandos utilizados para cada ejercicio.
 
    - **Linux**:
 
+     escritura y sobreescritura
      ```bash
      echo "<h1>Hola mundo</h1>" > index.html
+     ```
+
+     escritura y concatenación ascendente. Respeta lo escrito previamente.
+     ```bash
+     echo "<h1>Adiós</h1>" >> index.html
      ```
 
 3. Verifica nuevamente el contenido del archivo **index.html** para confirmar que se añadió el texto correctamente.
