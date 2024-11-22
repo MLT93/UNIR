@@ -3,6 +3,10 @@
  */
 package javabean;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Class Fiesta
  */
@@ -13,7 +17,7 @@ public class Fiesta {
 	 */
 	// Al ser "private" es únicamente accesible desde la propia clase
 	private String tipoFiesta;
-	private String drieccion;
+	private String direccion;
 	private int numBocadillos;
 	private int numBebidas;
 	private int numInvitados;
@@ -30,11 +34,11 @@ public class Fiesta {
 	/**
 	 * Constructor Overloaded
 	 */
-	public Fiesta(String tipoFiesta, String drieccion, int bocadillos, int bebidas, int invitados, String fecha,
+	public Fiesta(String tipoFiesta, String direccion, int bocadillos, int bebidas, int invitados, String fecha,
 			String hora) {
 		super();
 		this.tipoFiesta = tipoFiesta;
-		this.drieccion = drieccion;
+		this.direccion = direccion;
 		this.numBocadillos = bocadillos;
 		this.numBebidas = bebidas;
 		this.numInvitados = invitados;
@@ -47,9 +51,9 @@ public class Fiesta {
 	 */
 	@Override
 	public String toString() {
-		return "Fiesta [tipoFiesta=" + tipoFiesta + ", drieccion=" + drieccion + ", numBocadillos=" + numBocadillos
+		return "Fiesta [tipoFiesta=" + tipoFiesta + ", direccion=" + direccion + ", numBocadillos=" + numBocadillos
 				+ ", numBebidas=" + numBebidas + ", numInvitados=" + numInvitados + ", fecha=" + fecha + ", hora="
-				+ hora + ", getTipoFiesta()=" + getTipoFiesta() + ", getDrieccion()=" + getDrieccion()
+				+ hora + ", getTipoFiesta()=" + getTipoFiesta() + ", getdireccion()=" + getdireccion()
 				+ ", getNumBocadillos()=" + getNumBocadillos() + ", getNumBebidas()=" + getNumBebidas()
 				+ ", getNumInvitados()=" + getNumInvitados() + ", getFecha()=" + getFecha() + ", getHora()=" + getHora()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
@@ -69,12 +73,12 @@ public class Fiesta {
 		this.tipoFiesta = tipoFiesta;
 	}
 
-	protected String getDrieccion() {
-		return drieccion;
+	protected String getdireccion() {
+		return direccion;
 	}
 
-	protected void setDrieccion(String drieccion) {
-		this.drieccion = drieccion;
+	protected void setdireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	protected int getNumBocadillos() {
@@ -140,7 +144,8 @@ public class Fiesta {
 	}
 
 	public int cancelarInvitacion() {
-		return this.getNumInvitados() - 1;
+		if (this.getNumInvitados() > 0)
+			return this.getNumInvitados() - 1;
 	}
 
 	public String precioFiesta() {
@@ -154,6 +159,37 @@ public class Fiesta {
 		int tot = a + b + c;
 
 		return tot + "€";
+	}
+	
+	public void dateTime(String date, double time) {
+		
+		/**
+		 * LocalDateTime fechaHora = LocalDateTime.now();
+		 * String fechaFormateada = fechaHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+		 * System.out.println(fechaFormateada);
+		 * */
+		
+	    if (time >= 0 && time < 24) {
+	    	// Divido las horas de los minutos del parámetro double
+	        int hours = (int) Math.floor(time);
+	        int minutes = (int) ((time - hours) * 60);
+	        
+	        // Utilizo la clase LocalTime para convertir la fecha y la hora
+	        LocalTime localTime = LocalTime.of(hours, minutes);
+	        LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+	        
+	        // Actualizo los atributos con un formato definido
+	        this.setFecha(localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+	        this.setHora(localTime.format(DateTimeFormatter.ofPattern("HH:mm")));
+	    }
+	}
+	
+	public void tipoFiesta(String str) {
+		this.setTipoFiesta(str);
+	}
+	
+	public void direccionFiesta(String stri) {
+		this.setdireccion(stri);
 	}
 
 	// Muestro los datos de la fiesta
