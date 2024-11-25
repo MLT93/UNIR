@@ -1,6 +1,6 @@
 # Teórico:
 
-  - 
+  - Teoría sobre componentes hardware, para qué funcionan, cómo se utilizan, sus siglas qué significan y sus conexiones
 
 # Práctico:
 
