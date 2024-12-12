@@ -47,12 +47,17 @@ goto :menu
 
 :crear_informacion
 cls
+
 if not exist "%dir_raiz%" (
-    echo No se ha creado el directorio raiz. Seleccione primero la opcion 1.
+    echo No se ha creado el directorio. Seleccione primero la opcion 1.
     
     pause
     goto :menu
+) else (
+    echo Has creado tu directorio en: 
+    cd
 )
+
 :: Crear CONFIGRED.txt con ipconfig
 ipconfig > "%dir_raiz%\RED\CONFIGRED.txt"
 echo Archivo CONFIGRED.txt creado en %dir_raiz%\RED
@@ -72,6 +77,7 @@ goto :menu
 
 :salir
 cls
+
 echo Gracias por usar este programa.
 
 pause
