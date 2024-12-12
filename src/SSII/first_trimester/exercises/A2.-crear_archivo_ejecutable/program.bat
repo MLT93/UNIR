@@ -16,14 +16,15 @@ echo 2 - CREAR INFORMACION
 echo 3 - SALIR
 echo =============================
 
-:: Pide una entrada generada por el usuario, crea la variable y la inicializa. Después se realiza la comprobación
+:: Pide una entrada al usuario con `/p`, crea la variable `option` y la inicializa con el valor puesto por el usuario
+:: Después se realiza la comprobación con el `if` y se hace la redirección con `goto`
 set /p opcion="Selecciona una opcion (elige del 1 al 3): "
-if "%opcion%"=="1" goto crear_estructura
-if "%opcion%"=="2" goto crear_informacion
-if "%opcion%"=="3" goto salir
+if "%opcion%"=="1" goto :crear_estructura
+if "%opcion%"=="2" goto :crear_informacion
+if "%opcion%"=="3" goto :salir
 
 :: Previene la elección de otra opción que sea distinta a 1, 2 o 3 y nos devuelve al menu inicial
-echo Opcion invalida, intenta nuevamente.
+echo Valor incorrecto, prueba de nuevo.
 
 :: Esto pregunta si deseamos continuar, y después nos lleva a la referencia con el `goto`
 pause
