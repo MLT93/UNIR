@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS biblioteca;
 
 CREATE DATABASE IF NOT EXISTS biblioteca;
 
-ALTER DATABASE biblioteca DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ALTER DATABASE biblioteca DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 USE biblioteca;
 
@@ -18,7 +18,7 @@ CREATE TABLE `biblioteca`.`editoriales` (
     `direction` VARCHAR(200) NOT NULL,
     `email` VARCHAR (180) NOT NULL,
     `phone` VARCHAR(200) NOT NULL
-  ) ENGINE = InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 INSERT INTO editoriales (
   name,
@@ -37,7 +37,7 @@ CREATE TABLE `biblioteca`.`libros` (
     `id_author` INT(10) UNSIGNED,
     `year` INT (4) NOT NULL,
     `id_editorial` INT(10) UNSIGNED
-  ) ENGINE = InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 INSERT INTO libros (
   title,
@@ -57,7 +57,7 @@ CREATE TABLE `biblioteca`.`autores` (
     `pseudonym` INT (8),
     `nationality` VARCHAR(200),
     `language` VARCHAR(200)
-  ) ENGINE = InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 INSERT INTO autores (
   name,
@@ -90,7 +90,7 @@ CREATE TABLE `biblioteca`.`libros` (
     `id_author` INT(10) UNSIGNED,
     `year` INT (4) NOT NULL,
     `id_editorial` INT(10) UNSIGNED
-  ) ENGINE = InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  ) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 ALTER TABLE libros 
   ADD KEY autoresID (id_author),
@@ -107,7 +107,7 @@ CREATE TABLE `biblioteca`.`libros` (
     `id_editorial` INT(10) UNSIGNED,
     FOREIGN KEY (`id_author`) REFERENCES `autores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (`id_editorial`) REFERENCES `editoriales` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 # Ejemplo easy
 USE `gameclub`;
@@ -123,14 +123,14 @@ CREATE TABLE `ordenespago` (
   `fechaOrden` date NOT NULL,
   `estado` varchar(255) NOT NULL COMMENT 'Generada, En proceso, Completada',
    FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 # Ejemplo completo con clave foránea
 DROP DATABASE if EXISTS prueba;
 
 CREATE DATABASE IF NOT EXISTS prueba;
 
-ALTER DATABASE prueba DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+ALTER DATABASE prueba DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 USE prueba;
 
@@ -140,7 +140,7 @@ create table prueba.letras (
 	id_letra INT (10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     letra VARCHAR (1) NOT NULL,
     descripcion TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO prueba.letras (letra, descripcion) VALUES 
 ('a', 'letra principal del alfabeto'),
@@ -152,7 +152,7 @@ create table prueba.alfabetos (
     nombre VARCHAR (100) NOT NULL,
     id_letra INT (10) UNIQUE NOT NULL,
     FOREIGN KEY (id_letra) REFERENCES letras (id_letra) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO prueba.alfabetos (nombre, id_letra) VALUES 
 ('alfabeto griego', 1),
@@ -166,7 +166,7 @@ SHOW COLUMNS FROM prueba.alfabetos;
 /** DATABASE */
 CREATE DATABASE IF NOT EXISTS tienda;
 
-ALTER DATABASE tienda CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER DATABASE tienda CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 USE tienda;
 
@@ -183,7 +183,7 @@ CREATE TABLE `tienda`.`clientes` (
   `email` VARCHAR(255) NOT NULL,
   `direccion` VARCHAR(255) NOT NULL,
   `telefono` VARCHAR(255) NOT NULL
-) ENGINE = InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 DROP TABLE IF EXISTS proveedores;
 
@@ -193,7 +193,7 @@ CREATE TABLE `tienda`.`proveedores` (
   `direction` VARCHAR(200) NOT NULL,
   `tel` INT (14),
   `cif` VARCHAR(50)
-) ENGINE = InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 DROP TABLE IF EXISTS pedidos;
 
@@ -205,7 +205,7 @@ CREATE TABLE `tienda`.`pedidos` (
   `pvp` DECIMAL (5,2),
   `cliente_id` INT (10) UNSIGNED, /* `UNSIGNED` se usa para que no se acepten signos en el texto escrito */
   `date` DATE
-) ENGINE = InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 DROP TABLE IF EXISTS tarifas;
 
@@ -216,11 +216,11 @@ CREATE TABLE `tienda`.`tarifas` (
   `paraSocios` TINYINT(1) NOT NULL,
   `activa` TINYINT(1) NOT NULL, /* `TINYINT` se usa como un BOOLEAN. SQL convierte el tipo BOOLEAN a este. Devuelve 0 (false) o 1 (true) */
   `descuentoSocios` FLOAT NOT NULL COMMENT 'es un %' /* `COMMENT` se usa para poner un comentario por defecto al campo de la tabla */
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /** MODIFICAR TABLAS Y BASES DE DATOS */
 # Nuevo campo en una tabla
-ALTER TABLE alumnos ADD materia VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;
+ALTER TABLE alumnos ADD materia VARCHAR(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 # Agregar registros a una tabla
 INSERT INTO estudiantes (estudiante_nombre, estudiante_apellido, estudiante_edad) VALUES ("Marquitos", "Feliz", 31);
 # Devolver datos de una tabla
