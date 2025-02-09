@@ -13,7 +13,7 @@ USE biblioteca;
 DROP TABLE IF EXISTS editoriales;
 
 CREATE TABLE `biblioteca`.`editoriales` (
-    `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(200) NOT NULL,
     `direction` VARCHAR(200) NOT NULL,
     `email` VARCHAR (180) NOT NULL,
@@ -32,7 +32,7 @@ INSERT INTO editoriales (
 DROP TABLE IF EXISTS libros;
 
 CREATE TABLE `biblioteca`.`libros` (
-    `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(200) NOT NULL,
     `id_author` INT(10) UNSIGNED,
     `year` INT (4) NOT NULL,
@@ -51,7 +51,7 @@ INSERT INTO libros (
 DROP TABLE IF EXISTS autores;
 
 CREATE TABLE `biblioteca`.`autores` (
-    `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(200) NOT NULL,
     `surname` VARCHAR(200) NOT NULL,
     `pseudonym` INT (8),
@@ -85,7 +85,7 @@ INSERT INTO autores (
 
 # Sintaxis 1 (Con esta forma es siempre recomendable alterar las tablas al final del archivo)
 CREATE TABLE `biblioteca`.`libros` (
-    `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(200) NOT NULL,
     `id_author` INT(10) UNSIGNED,
     `year` INT (4) NOT NULL,
@@ -174,7 +174,7 @@ USE tienda;
 DROP TABLE IF EXISTS clientes;
 
 CREATE TABLE `tienda`.`clientes` (
-  `id` INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  `id` INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, /* Al ser AUTO_INCREMENT, es innecesario ponerle `NOT NULL` */
   `nombre` VARCHAR(255) NOT NULL,
   `apellido1` VARCHAR(255) NOT NULL,
   `apellido2` VARCHAR(255) NOT NULL,
@@ -188,7 +188,7 @@ CREATE TABLE `tienda`.`clientes` (
 DROP TABLE IF EXISTS proveedores;
 
 CREATE TABLE `tienda`.`proveedores` (
-  `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `nombre` VARCHAR(200) NOT NULL,
   `direction` VARCHAR(200) NOT NULL,
   `tel` INT (14),
@@ -198,7 +198,7 @@ CREATE TABLE `tienda`.`proveedores` (
 DROP TABLE IF EXISTS pedidos;
 
 CREATE TABLE `tienda`.`pedidos` (
-  `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  `id` INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `code` VARCHAR(200) NOT NULL UNIQUE,
   `total` DECIMAL (5,2), /* 5 dígitos, 2 decimales */
   `descuento` DECIMAL (5,2),
@@ -210,7 +210,7 @@ CREATE TABLE `tienda`.`pedidos` (
 DROP TABLE IF EXISTS tarifas;
 
 CREATE TABLE `tienda`.`tarifas` (
-  `id` INT(10) NOT NULL,
+  `id` INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `tipo` VARCHAR(255) NOT NULL,
   `coste` FLOAT NOT NULL, /* `FLOAT` es para decimales */
   `paraSocios` TINYINT(1) NOT NULL,
