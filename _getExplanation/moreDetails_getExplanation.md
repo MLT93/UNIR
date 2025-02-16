@@ -1,8 +1,10 @@
 ### `Detalla conceptos:`
-  Repite la explicación: Sé más detallado y específico aún
+
+Repite la explicación: Sé más detallado y específico aún
 
 ### `Actualizar explicación:`
-  Repite la siguiente explicación:
+
+Repite la siguiente explicación:
 
       <...>
 
