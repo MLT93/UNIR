@@ -1,10 +1,8 @@
-# Testing
+# Ejercicio 3 de LMS
 
 ## Descripción
 
-Este proyecto es una página web que representa tests de configuración HTML, CSS y JavaScript.
-
-La página está diseñada para ser visualmente atractiva y fácil de navegar, proporcionando una experiencia interactiva en la que los usuarios pueden explorar personajes famosos de Marvel organizados al estilo de la tabla periódica.
+Este proyecto es un ejercicio de HTML y CSS relacionado con Breaking Bad.
 
 ## Funcionalidades
 
@@ -12,6 +10,6 @@ La página está diseñada para ser visualmente atractiva y fácil de navegar, p
 
 ## Tecnologías utilizadas
 
+- **FIGMA** para el diseño.
 - **HTML5** y **CSS3** para la estructura y el estilo.
 - **JavaScript** para la interactividad.
-- **CSS3** para el diseño.

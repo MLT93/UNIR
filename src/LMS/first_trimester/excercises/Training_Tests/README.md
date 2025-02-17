@@ -12,6 +12,6 @@ La página está diseñada para ser visualmente atractiva y fácil de navegar, p
 
 ## Tecnologías utilizadas
 
+- **FIGMA** para el diseño.
 - **HTML5** y **CSS3** para la estructura y el estilo.
 - **JavaScript** para la interactividad.
-- **CSS3** para el diseño.
