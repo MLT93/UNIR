@@ -1,0 +1,11 @@
+{
+  "printWidth": 110,
+  "htmlWhitespaceSensitivity": "ignore",
+  "trailingComma": "none",
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "tsxSingleQuote": true,
+  "jsxSingleQuote": true,
+  "arrowParens": "avoid"
+}
