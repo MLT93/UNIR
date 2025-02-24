@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,50 +12,70 @@
     <link rel="icon" type="image/png" sizes="32x32" href="public/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="public/favicons/favicon-16x16.png" />
     <link rel="manifest" href="public/favicons/site.webmanifest" />
-    <link rel="stylesheet" href="src/css/training.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="src/css/index.css" />
+    <title>Breaking Bad</title>
   </head>
   <body>
     <header>
       <section class="header">
-        <p>Logo</p>
-        <p>Title</p>
-        <p>Login</p>
+        <img
+          src="./src/assets/img/logo.PNG"
+          alt="Logo principal de Breaking Bad"
+          title="Logo principal de Breaking Bad"
+        />
+        <h3 aria-describedby="Título de citación principal">
+          <span>I did it for me. I liked it.</span>
+          <span>&nbsp;I was good at it.</span>
+          <span>&nbsp;And, I was really... I was alive.</span>
+        </h3>
       </section>
     </header>
 
     <nav>
       <ul class="nav">
-        <li>link 1</li>
-        <li>link 2</li>
-        <li>link 3</li>
-        <li>link 4</li>
-        <li id="modal">link 5</li>
+        <li></li>
       </ul>
-      <div class="nav__modal">
-        <div>Hola 1</div>
-        <div>Hola 2</div>
-        <div>Hola 3</div>
-        <div>Hola 4</div>
-      </div>
+      <div class="nav__modal"></div>
     </nav>
 
     <main>
       <section class="main">
-        <p>Hola Test</p>
+        <img
+          src="./src/assets/img/poster.jpg"
+          usemap="#image-map"
+          alt="Poster principal de Breaking Bad"
+          title="Poster principal de Breaking Bad"
+        />
+
+        <map name="image-map">
+          <area
+            target="_self"
+            alt="Breaking title"
+            title="Breaking title"
+            href="./formulario.html"
+            coords="481,101,668,145"
+            shape="rect"
+            aria-label="Redirección al formulario"
+          />
+          <area
+            target="_self"
+            alt="Bad title"
+            title="Bad title"
+            href="./tabla.html"
+            coords="544,148,626,181"
+            shape="rect"
+            aria-label="Redirección a al la tabla periódica"
+          />
+        </map>
       </section>
     </main>
 
     <aside>
-      <div class="aside">
-        <p>Aside</p>
-      </div>
+      <div class="aside"></div>
     </aside>
 
     <footer>
-      <section class="footer">
-        <p>Footer</p>
-      </section>
+      <section class="footer"></section>
     </footer>
 
     <script type="module" src="src/js/script.js"></script>
