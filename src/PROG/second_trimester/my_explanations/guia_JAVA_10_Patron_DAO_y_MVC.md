@@ -30,204 +30,7 @@ Para usar DAO en un proyecto en **Eclipse con Java 21**, sigue estos pasos:
 
 ---
 
-### **3️⃣ Creando una Clase Modelo (Entidad)**
-
-Primero, definimos una clase `Usuario` que representará nuestra tabla en la base de datos.
-
-```java
-public class Usuario {
-    private int id;
-    private String nombre;
-    private String email;
-
-    public Usuario() {}
-
-    public Usuario(int id, String nombre, String email) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-    }
-
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-
-    @Override
-    public String toString() {
-        return "Usuario{id=" + id + ", nombre='" + nombre + "', email='" + email + "'}";
-    }
-}
-```
-
-📌 **Esta clase representa un usuario con tres atributos: `id`, `nombre`, y `email`.**
-
----
-
-### **4️⃣ Creando la Interfaz DAO (Definición de Métodos)**
-
-El siguiente paso es definir una **interfaz `UsuarioDAO`** con los métodos para acceder a la base de datos.
-
-```java
-import java.util.List;
-
-public interface UsuarioDAO {
-    void insertar(Usuario usuario);
-    Usuario obtenerPorId(int id);
-    List<Usuario> obtenerTodos();
-    void actualizar(Usuario usuario);
-    void eliminar(int id);
-}
-```
-
-📌 **Esta interfaz define los métodos CRUD (Create, Read, Update, Delete) que deben ser implementados.**
-
----
-
-### **5️⃣ Implementando DAO con JDBC**
-
-Ahora implementamos la interfaz en una clase `UsuarioDAOImpl` que se conectará a la base de datos.
-
-```java
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
-public class UsuarioDAOImpl implements UsuarioDAO {
-    private static final String URL = "jdbc:mysql://localhost:3306/mi_base";
-    private static final String USUARIO = "root";
-    private static final String PASSWORD = "123456";
-
-    public UsuarioDAOImpl() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver"); // Cargar el driver JDBC
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void insertar(Usuario usuario) {
-        String sql = "INSERT INTO usuarios (nombre, email) VALUES (?, ?)";
-        try (Connection conn = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, usuario.getNombre());
-            stmt.setString(2, usuario.getEmail());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public Usuario obtenerPorId(int id) {
-        String sql = "SELECT * FROM usuarios WHERE id = ?";
-        try (Connection conn = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("email"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override
-    public List<Usuario> obtenerTodos() {
-        List<Usuario> usuarios = new ArrayList<>();
-        String sql = "SELECT * FROM usuarios";
-        try (Connection conn = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                usuarios.add(new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("email")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return usuarios;
-    }
-
-    @Override
-    public void actualizar(Usuario usuario) {
-        String sql = "UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?";
-        try (Connection conn = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, usuario.getNombre());
-            stmt.setString(2, usuario.getEmail());
-            stmt.setInt(3, usuario.getId());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void eliminar(int id) {
-        String sql = "DELETE FROM usuarios WHERE id = ?";
-        try (Connection conn = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-📌 **Esta implementación maneja las operaciones CRUD con JDBC de manera eficiente.**
-
----
-
-### **6️⃣ Probando el DAO en `main()`**
-
-Finalmente, probamos nuestra implementación en el método `main()`.
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
-
-        // Insertar usuario
-        Usuario nuevoUsuario = new Usuario(0, "Juan Pérez", "juan@example.com");
-        usuarioDAO.insertar(nuevoUsuario);
-        System.out.println("Usuario insertado.");
-
-        // Obtener usuario por ID
-        Usuario usuario = usuarioDAO.obtenerPorId(1);
-        System.out.println("Usuario obtenido: " + usuario);
-
-        // Obtener todos los usuarios
-        System.out.println("Lista de usuarios:");
-        usuarioDAO.obtenerTodos().forEach(System.out::println);
-
-        // Actualizar usuario
-        if (usuario != null) {
-            usuario.setNombre("Juan P. Actualizado");
-            usuarioDAO.actualizar(usuario);
-            System.out.println("Usuario actualizado.");
-        }
-
-        // Eliminar usuario
-        usuarioDAO.eliminar(1);
-        System.out.println("Usuario eliminado.");
-    }
-}
-```
-
-📌 **Este código prueba la funcionalidad de nuestro DAO.**
-
----
-
-### **7️⃣ Conclusión**
+### **3️⃣ Resumen**
 
 El **Patrón DAO en Java** ayuda a organizar el acceso a bases de datos separando la lógica de negocio de la lógica de persistencia.
 
@@ -306,15 +109,18 @@ Un sistema con DAO suele tener la siguiente estructura de paquetes y clases:
 
 ```
 /src
-  /modelo
-    Usuario.java       # Modelo de datos
   /dao
     UsuarioDAO.java    # Interfaz DAO
     UsuarioDAOImpl.java # Implementación DAO
-  /controlador
-    UsuarioController.java # Controlador que usa el DAO
+  /modelo
+    Usuario.java       # Modelo de datos
   /vista
     index.jsp          # Interfaz gráfica o vista
+  /controlador
+    UsuarioController.java # Controlador que usa el DAO
+  /test
+    TestUsuario.java
+  index.jsp
 ```
 
 ---
@@ -327,7 +133,7 @@ Vamos a crear una aplicación en Java que **maneja usuarios** en una base de dat
 
 #### **📌 Paso 1: Configurar la Base de Datos MySQL**
 
-📍 Ejecuta este SQL en MySQL para crear la base de datos y la tabla `usuarios`:
+📍 Ejecuta este SQL en MySQL y Apache (u otro servidor) para crear la base de datos y la tabla `usuarios` donde nos conectaremos para realizar el/los patrones de diseño:
 
 ```sql
 CREATE DATABASE mi_base_datos;
@@ -343,9 +149,9 @@ CREATE TABLE usuarios (
 
 ---
 
-#### **📌 Paso 2: Crear la Clase de Modelo (`Usuario.java`)**
+#### **📌 Paso 2: Crear la Clase de Modelo (`Usuario.java`) que es la Entidad**
 
-El modelo representa un usuario en la aplicación.
+Cada clase dentro de Modelo será una Entidad o tabla en la BBDD. El modelo representa un usuario en la aplicación y lo alojamos en un package `modelo`.
 
 ```java
 package modelo;
@@ -382,9 +188,9 @@ public class Usuario {
 
 ---
 
-#### **📌 Paso 3: Crear la Interfaz DAO (`UsuarioDAO.java`)**
+#### **📌 Paso 3: Crear la Interfaz (la estructura/plantilla que define la clase) DAO (`UsuarioDAO.java`)**
 
-Define los métodos CRUD sin implementarlos.
+Define los métodos CRUD sin implementarlos en un package `dao`.
 
 ```java
 package dao;
@@ -401,11 +207,13 @@ public interface UsuarioDAO {
 }
 ```
 
+📌 **Esta interfaz define los métodos CRUD (Create, Read, Update, Delete) que deben ser implementados.**
+
 ---
 
 #### **📌 Paso 4: Implementar el DAO (`UsuarioDAOImpl.java`)**
 
-Implementa la interfaz **UsuarioDAO** usando **JDBC** para conectar con MySQL.
+Implementa la interfaz **UsuarioDAO** usando **JDBC** para conectar con MySQL en un package `dao`.
 
 ```java
 package dao;
@@ -501,9 +309,53 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 }
 ```
 
+📌 **Esta implementación maneja las operaciones CRUD con JDBC de manera eficiente.**
+
 ---
 
-#### **📌 Paso 5: Crear un Controlador (`UsuarioController.java`)**
+#### **📌 Paso 5: Probando el DAO en `main()`**
+
+Finalmente, probamos nuestra implementación en el método `main()` dentro de un package `test`.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+
+        // Insertar usuario
+        Usuario nuevoUsuario = new Usuario(0, "Juan Pérez", "juan@example.com");
+        usuarioDAO.insertar(nuevoUsuario);
+        System.out.println("Usuario insertado.");
+
+        // Obtener usuario por ID
+        Usuario usuario = usuarioDAO.obtenerPorId(1);
+        System.out.println("Usuario obtenido: " + usuario);
+
+        // Obtener todos los usuarios
+        System.out.println("Lista de usuarios:");
+        usuarioDAO.obtenerTodos().forEach(System.out::println);
+
+        // Actualizar usuario
+        if (usuario != null) {
+            usuario.setNombre("Juan P. Actualizado");
+            usuarioDAO.actualizar(usuario);
+            System.out.println("Usuario actualizado.");
+        }
+
+        // Eliminar usuario
+        usuarioDAO.eliminar(1);
+        System.out.println("Usuario eliminado.");
+    }
+}
+```
+
+📌 **Este código prueba la funcionalidad de nuestro DAO antes de crear controlador y vista.**
+
+---
+
+#### **📌 Paso 6: Crear un Controlador (`UsuarioController.java`)**
+
+Esto crea el manejador que gestionará las funciones dentro de la vista, aprovechándose de las funciones que se conectan directamente a la BBDD dentro de un package `controller`.
 
 ```java
 package controlador;
@@ -538,6 +390,10 @@ public class UsuarioController {
     }
 }
 ```
+
+#### **📌 Paso 7: Crear una vista relacionada con un Controlador (`UsuarioView.java`)**
+
+Esta clase manejará cómo se representa Usuario (en éste caso) dentro de lo que mostraremos en el archivo `index.jsp`
 
 ---
 
