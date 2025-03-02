@@ -2,7 +2,7 @@
 
 ### **1️⃣ Introducción a Objetos y Clases en Java**
 
-En **Java**, los **objetos** son instancias de **clases**. Una **clase** es una plantilla o modelo que define las propiedades (atributos) y comportamientos (métodos) que tendrán los objetos creados a partir de ella. Los objetos son instancias de esas clases y pueden contener valores específicos para los atributos definidos en la clase.
+En **Java**, los **objetos** son instancias de **clases**. Una **clase** es una plantilla o modelo que define las propiedades (atributos) y comportamientos (métodos) que tendrán los objetos creados a partir de ella. Los objetos son instancias de esas clases y pueden contener valores específicos para los atributos definidos en la clase. **[Intro a POO](https://openwebinars.net/blog/introduccion-a-poo-en-java-atributos-y-constructores/)**
 
 **Conceptos Clave**:
 
@@ -54,27 +54,172 @@ public class MiClase {
 }
 ```
 
+#### **Entendiendo los Constructores**
+
+Antes de sumergirnos en la asignación de tipos de datos, repasemos rápidamente qué son los constructores:
+
+- **Métodos Especiales:** Los constructores son métodos especiales en una clase Java que se llaman automáticamente cuando se crea un objeto de esa clase.
+- **Inicialización:** Su propósito principal es inicializar las variables de instancia (campos) del objeto con valores apropiados.
+- **Mismo Nombre que la Clase:** El nombre de un constructor debe ser exactamente el mismo que el nombre de la clase.
+- **Sin Tipo de Retorno:** Los constructores no tienen un tipo de retorno, ni siquiera `void`.
+
+**Asignando Varios Tipos de Datos**
+
+Cuando creas un constructor, defines sus parámetros, que determinan los tipos de datos que puede recibir. Estos parámetros se utilizan luego para asignar valores a las variables de instancia del objeto.
+
+También existe la posibilidad de asignar más de un tipo de dato a un atributo en la clase, utilizando **Tipos Genéricos** que se explicarán en **guia_JAVA_09_Class_con_Tipos_Genericos.md**.
+
+#### **Tipos de Datos Básicos (Primitivos):**
+Los tipos de datos primitivos de Java incluyen `int`, `double`, `boolean`, `char`, `float`, `byte`, `short` y `long`.
+
+```java
+public class Producto {
+    private int id;
+    private String nombre;
+    private double precio;
+    private boolean enStock;
+
+    // Constructor con tipos de datos primitivos
+    public Producto(int id, String nombre, double precio, boolean enStock) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.enStock = enStock;
+    }
+
+    // Ejemplo de uso
+    public static void main(String[] args) {
+        Producto producto1 = new Producto(123, "Laptop", 1200.50, true);
+        System.out.println("ID del Producto: " + producto1.id);
+        System.out.println("Nombre del Producto: " + producto1.nombre);
+        System.out.println("Precio del Producto: " + producto1.precio);
+        System.out.println("Producto en Stock: " + producto1.enStock);
+    }
+}
+```
+
+- En este ejemplo, el constructor `Producto` toma parámetros `int`, `String`, `double` y `boolean`.
+- La palabra clave `this` se utiliza para diferenciar entre las variables de instancia y los parámetros del constructor.
+
+#### **Tipos de Datos de Referencia (Objetos):**
+Los tipos de datos de referencia se refieren a objetos, como `String`, arrays e instancias de otras clases.
+
+```java
+public class Direccion {
+    private String calle;
+    private String ciudad;
+
+    public Direccion(String calle, String ciudad) {
+        this.calle = calle;
+        this.ciudad = ciudad;
+    }
+}
+
+public class Persona {
+    private String nombre;
+    private int edad;
+    private Direccion direccion; // Referencia a un objeto Direccion
+
+    public Persona(String nombre, int edad, Direccion direccion) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.direccion = direccion;
+    }
+
+    public static void main(String[] args) {
+        Direccion direccionCasa = new Direccion("123 Calle Principal", "Ciudad Cualquiera");
+        Persona persona1 = new Persona("Alicia", 30, direccionCasa);
+        System.out.println("Nombre de la Persona: " + persona1.nombre);
+        System.out.println("Ciudad de la Persona: " + persona1.direccion.ciudad);
+    }
+}
+```
+
+- Aquí, el constructor `Persona` toma un objeto `Direccion` como parámetro.
+- Esto demuestra cómo pasar y almacenar referencias a otros objetos dentro de una clase.
+
+#### **Arrays y ArrayList:**
+Los arrays también son tipos de referencia, y puedes pasarlos a los constructores.
+
+```java
+// Array normal
+public class Estudiante {
+    private String nombre;
+    private int[] calificaciones;
+
+    public Estudiante(String nombre, int[] calificaciones) {
+        this.nombre = nombre;
+        this.calificaciones = calificaciones;
+    }
+
+    public static void main(String[] args) {
+        int[] calificacionesEstudiante = {90, 85, 95};
+        Estudiante estudiante1 = new Estudiante("Bob", calificacionesEstudiante);
+        System.out.println("Nombre del Estudiante: " + estudiante1.nombre);
+        System.out.println("Primera Calificación: " + estudiante1.calificaciones[0]);
+    }
+}
+```
+
+```java
+// Con ArrayList
+import java.util.ArrayList;
+
+public class Estudiante {
+    private String nombre;
+    private ArrayList<Integer> calificaciones;
+
+    public Estudiante(String nombre, ArrayList<Integer> calificaciones) {
+        this.nombre = nombre;
+        this.calificaciones = calificaciones;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> calificacionesEstudiante = new ArrayList<>();
+        calificacionesEstudiante.add(90);
+        calificacionesEstudiante.add(85);
+        calificacionesEstudiante.add(95);
+
+        Estudiante estudiante1 = new Estudiante("Bob", calificacionesEstudiante);
+        System.out.println("Nombre del Estudiante: " + estudiante1.nombre);
+        System.out.println("Primera Calificación: " + estudiante1.calificaciones.get(0));
+
+        // Ejemplo de añadir una nueva calificación
+        estudiante1.calificaciones.add(100);
+        System.out.println("Calificaciones Actualizadas: " + estudiante1.calificaciones);
+    }
+}
+```
+
+- El constructor `Estudiante` toma un `int[]` (array de enteros) como parámetro.
+
+**Consideraciones Clave**
+
+- **Sobrecarga de Constructores:** Puedes tener múltiples constructores en una clase con diferentes listas de parámetros (sobrecarga de constructores). Esto te permite crear objetos con diferentes niveles de inicialización.
+- **Constructor Predeterminado:** Si no defines ningún constructor, Java proporciona un constructor predeterminado sin argumentos.
+- **Validación de Datos:** Es una buena práctica validar los parámetros del constructor para asegurarte de que cumplen con tus requisitos.
+- **Inmutabilidad:** Si quieres crear objetos inmutables (objetos cuyo estado no se puede cambiar después de la creación), inicializa todas las variables de instancia en el constructor y hazlas `final`.
+
 ---
 
 ### **3️⃣ Componentes de una Clase**
 
 1. **Atributos** (también llamados variables de instancia o campos):
-
    - Son las propiedades del objeto.
    - Se definen dentro de la clase, pero fuera de los métodos.
    - El modificador de acceso más común para los atributos es `private`, lo que ayuda a implementar el principio de **encapsulación**.
-2. **Métodos**:
 
+2. **Métodos**:
    - Son las funciones o acciones que puede realizar un objeto de esa clase.
    - Los métodos pueden tener modificadores de acceso como `public`, `private` o `protected`.
    - Los métodos suelen definir la lógica para manipular los atributos del objeto.
-3. **Constructores**:
 
+3. **Constructores**:
    - Son especiales en las clases y se utilizan para inicializar los objetos cuando se crean.
    - Un constructor tiene el mismo nombre que la clase y no tiene tipo de retorno.
    - Si no se define un constructor, Java proporciona un constructor predeterminado sin argumentos.
-4. **Getters y Setters**:
 
+4. **Getters y Setters**:
    - Son métodos que permiten acceder o modificar los valores de los atributos de un objeto.
    - Los **getters** retornan el valor de un atributo.
    - Los **setters** modifican el valor de un atributo.

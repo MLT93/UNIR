@@ -212,9 +212,60 @@ En este caso, estamos utilizando `ArrayList<String>` para asegurar que solo se a
 
 ---
 
-### **8️⃣ Conclusión**
+### **8️⃣ Combinando Tipos Genéricos y Específicos en Java**
+En Java, puedes **combinar tipos genéricos con tipos específicos** (primitivos o clases concretas) dentro de una misma clase. Esto permite mantener la flexibilidad en ciertos atributos, mientras que otros conservan un tipo fijo.
+
+#### **📌 Ejemplo de Uso**
+```java
+public class EjemploCombinado<T> {
+    private T number; // Puede ser Integer o null
+    private double valorDouble;
+    private String nombre;
+
+    public EjemploCombinado(T number, double valorDouble, String nombre) {
+        this.number = number;
+        this.valorDouble = valorDouble;
+        this.nombre = nombre;
+    }
+
+    public T getNumber() {
+        return number;
+    }
+
+    public double getValorDouble() {
+        return valorDouble;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public static void main(String[] args) {
+        EjemploCombinado<Integer> ejemplo1 = new EjemploCombinado<>(123, 3.14, "Ejemplo 1");
+        System.out.println("Number: " + ejemplo1.getNumber() + ", Double: " + ejemplo1.getValorDouble() + ", Nombre: " + ejemplo1.getNombre());
+
+        EjemploCombinado<Integer> ejemplo2 = new EjemploCombinado<>(null, 2.71, "Ejemplo 2");
+        System.out.println("Number: " + ejemplo2.getNumber() + ", Double: " + ejemplo2.getValorDouble() + ", Nombre: " + ejemplo2.getNombre());
+    }
+}
+```
+
+#### **📌 Explicación**
+✔ **Tipo Genérico `T`** → Permite almacenar cualquier tipo de objeto en `number`, como `Integer` o `null`.  
+✔ **Tipos Específicos** → `valorDouble` es `double` y `nombre` es `String`, manteniendo seguridad de tipos.  
+✔ **Constructor** → Recibe `T`, `double` y `String` para inicializar los atributos.  
+✔ **Ejemplo en `main`** → Se crean instancias con distintos valores, demostrando la flexibilidad del tipo genérico.  
+
+#### **📌 Consideraciones Importantes**
+🔹 **Tipos Primitivos y Nulos** → Para permitir `null`, usa clases envolventes (`Integer` en vez de `int`).  
+🔹 **Seguridad de Tipos** → `T` puede ser cualquier objeto, por lo que hay que manejarlo con cuidado.  
+🔹 **Casting Necesario** → Si `T` es un objeto genérico, podría requerir conversión a un tipo específico.  
+🔹 **Claridad del Código** → Documenta el uso del tipo genérico para evitar confusiones futuras.  
+
+### **9️⃣ Conclusión**
 Los **genéricos en Java** son una herramienta poderosa que permite crear código más flexible, reutilizable y seguro en tiempo de compilación.  
-### **Recapitulación:**
+
+#### **Recapitulación:**
 - Los genéricos permiten escribir clases, métodos e interfaces parametrizadas.
 - Ayudan a mantener la **seguridad de tipo**.
 - Son especialmente útiles en colecciones, como `ArrayList`, `HashMap`, y en otros casos que requieren **múltiples tipos**.
