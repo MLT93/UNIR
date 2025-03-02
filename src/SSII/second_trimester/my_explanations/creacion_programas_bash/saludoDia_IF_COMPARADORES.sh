@@ -1,9 +1,14 @@
 #!/bin/bash
 
-# Obtener la hora actual
+# IF
+if true; then
+	# Ejecuto el primer 'echo " "; para que se vea un espacio antes de la ejecución'
+  echo " ";echo "Este es un IF que se ha creado usando TRUE para que se ejecute siempre"; echo " "
+fi
 
+# Obtener la hora actual
 horactual=$(date +%H)
-echo " "; echo "Son las $horactual horas:"; echo " "
+echo "Son las $horactual horas:"; echo " "
 
 # Obtener saludo con IF y COMPARADORES
 

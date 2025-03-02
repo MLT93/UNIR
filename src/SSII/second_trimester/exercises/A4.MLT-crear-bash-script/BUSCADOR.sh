@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# IF
+if true; then
+  echo "Este es un IF que se ha creado usando TRUE como evaluación"; echo " "
+fi
+
 # FOR + PARÁMETRO POSICIONAL
 for n in {1..10}; do
   # El parámetro posicional es `$1` y viene introducido por consola como argumento (al ejecutar el archivo. Se escribe justo al lado)
