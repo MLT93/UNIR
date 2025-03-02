@@ -10,6 +10,8 @@ done
 ```
 El bucle se ejecutará **mientras la condición sea verdadera**.
 
+*'Primero pregunta y luego dispara'*.
+
 ---
 
 ## 🔹 **2. Ejemplo simple con un contador**

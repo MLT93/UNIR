@@ -1,0 +1,8 @@
+
+Buscando en 'mi_fichero.txt': 
+Hola
+
+******************
+
+Resultados de la búsqueda en el directorio '/bla_bla':
+ESTO ES TODO AMIGOOOOS!!!
