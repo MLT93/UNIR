@@ -148,11 +148,17 @@ legend {
   background: var(--color-white);
   padding: 0.625rem;
 
+  font-size: x-large;
+
   border-radius: 0.3125rem;
   -webkit-border-radius: 0.3125rem;
   -moz-border-radius: 0.3125rem;
   -ms-border-radius: 0.3125rem;
   -o-border-radius: 0.3125rem;
+}
+
+.form__select option {
+  font-size: large;
 }
 
 .form__txtarea {
