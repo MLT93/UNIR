@@ -46,13 +46,16 @@ legend {
   padding: 0.625rem 0.9375rem;
 
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 2.3rem;
   font-style: italic;
 }
 
 .form__titles h2 {
   padding: 0.9375rem 0;
+
   text-align: center;
+
+  font-family: Arial;
 }
 
 .form__radio {
@@ -70,7 +73,9 @@ legend {
   display: flex;
 
   padding: 0.3125rem;
-  font-size: small;
+
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
 
   margin-top: 0.9375rem;
 

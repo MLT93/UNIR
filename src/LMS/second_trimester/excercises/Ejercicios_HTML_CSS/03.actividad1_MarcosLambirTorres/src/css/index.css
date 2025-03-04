@@ -2,7 +2,7 @@
 @font-face {
   /* Set Typography */
   font-family: 'Breaking Bad';
-  src: url(./assets/font/Breaking_Bad.ttf) format('woff');
+  src: url(../assets/font/Breaking_Bad.ttf) format('woff');
   font-weight: 400;
 }
 
@@ -47,6 +47,7 @@
     --color-white: rgb(246, 244, 244);
     --color-night: #0e0e0e;
     --color-gray: #3a3a3a;
+    --color-green: #0c3e11;
   }
 }
 
@@ -130,7 +131,7 @@ header {
   margin-top: 0.625rem;
 }
 
-.header h3[aria-describedby='Título de citación principal'] {
+.header h1[aria-describedby='Título de citación principal'] {
   padding: 1.875rem 0.9375rem;
 
   display: flex;
@@ -159,7 +160,7 @@ nav {
 }
 
 .nav__modal {
-  visibility: hidden;
+  display: none;
 }
 
 main {
@@ -195,10 +196,10 @@ footer {
   body {
     grid-template-areas:
       'header header header'
-      'nav    nav    nav'
+      /* 'nav    nav    nav' */
       'main   main   main'
       'footer footer footer';
-    grid-template-rows: 15rem 1rem auto 5rem;
+    grid-template-rows: 19rem /* 1rem */ auto 5rem;
   }
 
   aside {
@@ -209,12 +210,12 @@ footer {
     margin-top: none;
   }
 
-  .header h3[aria-describedby='Título de citación principal'] {
+  .header h1[aria-describedby='Título de citación principal'] {
     flex-direction: row;
 
     padding: 0.875rem 0.9375rem;
 
-    font-size: 1rem;
+    font-size: 2.5rem;
   }
 
   .main img[alt='Poster principal de Breaking Bad'] {
