@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Description of this file" />
+    <meta name="keywords" content="HTML, Web, Tests" />
+    <meta name="author" content="Marcos Lambir Torres" />
+    <link rel="icon" type="image/svg+xml" href="public/favicons/favicon-32x32.png" />
+    <link rel="shortcut icon" href="public/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="public/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="public/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="public/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="public/favicons/site.webmanifest" />
+    <link rel="stylesheet" href="src/css/index.css" />
+    <link rel="stylesheet" href="src/css/form.css" />
+    <title>Formulario Breaking Bad</title>
+  </head>
+  <body>
+    <header>
+      <section class="header"></section>
+    </header>
+
+    <nav>
+      <ul class="nav">
+        <li></li>
+      </ul>
+      <div class="nav__modal"></div>
+    </nav>
+
+    <main>
+      <section class="main">
+        <form
+          id="form"
+          class="form wrapper"
+          action="mailto:raul.rodriguez@proeducaglobal.com"
+          method="post"
+          enctype="multipart/form-data"
+          role="form"
+          accept-charset="UTF-8"
+        >
+          <div class="form__titles">
+            <h2>¡Breaking Bad – Que comience el juego!</h2>
+          </div>
+          <fieldset>
+            <legend>Datos Personales*</legend>
+            <label for="nombre" class="form__label">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Franco..." />
+
+            <label for="apellidos" class="form__label">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" required placeholder="Kelm..." />
+
+            <label for="direccion" class="form__label">Direcci&oacute;n Postal</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Calle, Número, Piso..." />
+
+            <label for="codigo_postal" class="form__label">C&oacute;digo Postal</label>
+            <input type="text" id="codigo_postal" name="codigo_postal" placeholder="330033..." />
+
+            <label for="ciudad" class="form__label">Ciudad</label>
+            <input type="text" id="ciudad" name="ciudad" placeholder="Madrid..." />
+
+            <label for="dni" class="form__label">DNI</label>
+            <input type="text" id="dni" name="dni" required placeholder="37833345J..." />
+
+            <label for="email" class="form__label">Correo Electr&oacute;nico</label>
+            <input type="email" id="email" name="email" required placeholder="example@mail.com..." />
+          </fieldset>
+
+          <fieldset class="form__radio">
+            <legend>Sexo*</legend>
+
+            <input type="radio" id="hombre" name="sexo" value="Hombre" />
+            <label class="form__label" for="hombre">
+              <span class="form__radiobtn"></span>
+              &nbsp;&nbsp;⭐Hombre
+            </label>
+
+            <input type="radio" id="mujer" name="sexo" value="Mujer" />
+            <label class="form__label" for="mujer">
+              <span class="form__radiobtn"></span>
+              &nbsp;&nbsp;⭐Mujer
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Fecha de Nacimiento*</legend>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" />
+          </fieldset>
+
+          <fieldset>
+            <legend for="personaje" class="form__label">Selecciona tu Personaje Favorito*</legend>
+            <select class="form__select" id="personaje" name="personaje">
+              <option value="jessie">Jessie Pinkman</option>
+              <option value="walter">Walter White</option>
+              <option value="saul">Saul Goodman</option>
+              <option value="gustavo">Gustavo Fring</option>
+              <option value="pollos">Pollos Hermanos</option>
+              <option value="otros">Otros personajes</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend for="comentarios">Comentarios*</legend>
+            <textarea
+              class="form__txtarea"
+              id="comentarios"
+              name="comentarios"
+              rows="7"
+              cols="30"
+              placeholder="Escribe aquí..."
+            ></textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Adjuntar Archivos*</legend>
+            <input type="file" name="archivo" />
+          </fieldset>
+
+          <div class="form__buttons">
+            <button type="submit">Enviar</button>
+            <button type="reset">Borrar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <aside>
+      <div class="aside"></div>
+    </aside>
+
+    <footer>
+      <section class="footer"></section>
+    </footer>
+
+    <script type="module" src="src/js/script.js"></script>
+  </body>
+</html>

@@ -3,11 +3,13 @@
 ---
 
 ## 🔹 **1. Sintaxis básica de `while`**
+
 ```bash
 while [ condición ]; do
     # Código a ejecutar
 done
 ```
+
 El bucle se ejecutará **mientras la condición sea verdadera**.
 
 *'Primero pregunta y luego dispara'*.
@@ -15,6 +17,7 @@ El bucle se ejecutará **mientras la condición sea verdadera**.
 ---
 
 ## 🔹 **2. Ejemplo simple con un contador**
+
 ```bash
 #!/bin/bash
 
@@ -25,7 +28,9 @@ while [ "$contador" -le 5 ]; do
     contador=$((contador + 1))  # Incrementa el contador
 done
 ```
+
 ✔ **Salida:**
+
 ```
 Iteración: 1
 Iteración: 2
@@ -35,6 +40,7 @@ Iteración: 5
 ```
 
 📌 **Explicación**:
+
 - `contador=1` → Se inicializa la variable.
 - `[ "$contador" -le 5 ]` → Mientras `contador` sea menor o igual a `5`, el bucle sigue.
 - `contador=$((contador + 1))` → Incrementa `contador` en cada iteración.
@@ -42,6 +48,7 @@ Iteración: 5
 ---
 
 ## 🔹 **3. `while` esperando entrada del usuario**
+
 ```bash
 #!/bin/bash
 
@@ -53,7 +60,9 @@ while [ "$opcion" != "salir" ]; do
     echo "Ingresaste: $opcion"
 done
 ```
+
 ✔ **Ejemplo de ejecución:**
+
 ```
 Escribe algo (o 'salir' para terminar):
 hola
@@ -67,12 +76,14 @@ Ingresaste: salir
 ```
 
 📌 **Explicación**:
+
 - El `while` se ejecuta hasta que el usuario escriba `"salir"`.
 - `read opcion` toma la entrada del usuario en cada iteración.
 
 ---
 
-## 🔹 **4. `while` con una encuesta (leer valores del usuario y evaluar respuestas)**
+## 🔹 **4. `while` con una encuesta o menú (leer valores del usuario y evaluar respuestas)**
+
 ```bash
 #!/bin/bash
 
@@ -99,7 +110,9 @@ while true; do # Se repite siempre
     echo ""  # Espacio para mejorar la legibilidad
 done
 ```
+
 ✔ **Ejemplo de salida:**
+
 ```
 ¿Cuál es tu lenguaje de programación favorito?
 1) Python
@@ -121,6 +134,7 @@ Saliendo de la encuesta...
 ```
 
 📌 **Explicación**:
+
 - Se usa un `while true` para repetir la encuesta hasta que el usuario elija salir (`5`).
 - `read -p` muestra un mensaje antes de capturar la entrada.
 - `case` evalúa la opción ingresada y da una respuesta.
@@ -129,6 +143,7 @@ Saliendo de la encuesta...
 ---
 
 ## 🔹 **5. `while` leyendo línea por línea de un archivo**
+
 ```bash
 #!/bin/bash
 
@@ -136,18 +151,23 @@ while IFS= read -r linea; do
     echo "Línea leída: $linea"
 done < archivo.txt
 ```
+
 ✔ **Ejemplo de salida (si `archivo.txt` tiene esto):**
+
 ```
 Hola mundo
 Esto es Bash
 ```
+
 Salida:
+
 ```
 Línea leída: Hola mundo
 Línea leída: Esto es Bash
 ```
 
 📌 **Explicación**:
+
 - `IFS=` evita que Bash elimine espacios al principio o final de la línea.
 - `read -r` evita que `\` (backslash) sea tratado como un carácter especial.
 - `< archivo.txt` redirige la entrada para leer el archivo.
@@ -155,6 +175,7 @@ Línea leída: Esto es Bash
 ---
 
 ## 🔹 **6. `while` infinito (hasta que se detenga)**
+
 Un bucle infinito es útil para procesos que deben ejecutarse continuamente.
 
 ```bash
@@ -165,7 +186,9 @@ while true; do
     sleep 2  # Espera 2 segundos entre cada iteración
 done
 ```
+
 ✔ **Salida (se repetirá hasta que lo detengas con `Ctrl + C`):**
+
 ```
 Presiona Ctrl + C para detenerme...
 Presiona Ctrl + C para detenerme...
@@ -173,12 +196,14 @@ Presiona Ctrl + C para detenerme...
 ```
 
 📌 **Explicación**:
+
 - `while true` hace que el bucle nunca termine.
 - `sleep 2` espera 2 segundos antes de la siguiente iteración.
 
 ---
 
 ## 🔹 **7. `while` con `break` (para salir del bucle)**
+
 ```bash
 #!/bin/bash
 
@@ -195,7 +220,9 @@ while [ "$contador" -le 10 ]; do
     contador=$((contador + 1))
 done
 ```
+
 ✔ **Salida:**
+
 ```
 Número: 1
 Número: 2
@@ -206,11 +233,13 @@ Deteniendo en 5
 ```
 
 📌 **Explicación**:
+
 - Cuando `contador` llega a 5, `break` detiene el bucle.
 
 ---
 
 ## 🔹 **8. `while` con `continue` (para saltar una iteración)**
+
 ```bash
 #!/bin/bash
 
@@ -227,7 +256,9 @@ while [ "$contador" -lt 5 ]; do
     echo "Número: $contador"
 done
 ```
+
 ✔ **Salida:**
+
 ```
 Número: 1
 Número: 2
@@ -237,11 +268,13 @@ Número: 5
 ```
 
 📌 **Explicación**:
+
 - Cuando `contador = 3`, `continue` hace que `echo "Número: $contador"` no se ejecute en esa iteración.
 
 ---
 
 ## 🔹 **9. `while` con `until` (inverso de `while`)**
+
 Mientras `while` **se ejecuta mientras la condición sea verdadera**, `until` **se ejecuta mientras la condición sea falsa**.
 
 ```bash
@@ -254,7 +287,9 @@ until [ "$contador" -gt 5 ]; do
     contador=$((contador + 1))
 done
 ```
+
 ✔ **Salida:**
+
 ```
 Número: 1
 Número: 2
@@ -264,26 +299,29 @@ Número: 5
 ```
 
 📌 **Diferencia clave**:
+
 - `while [ condición ]` → Se ejecuta mientras la condición **sea verdadera**.
 - `until [ condición ]` → Se ejecuta mientras la condición **sea falsa**.
 
 ---
 
 ## 🚀 **Resumen rápido**
-| Tipo de `while` | Ejemplo |
-|--------------|---------|
-| Bucle con contador | `while [ "$i" -le 5 ]; do ... done` |
-| Esperando entrada del usuario | `while [ "$var" != "salir" ]; do read var; done` |
-| Encuesta interactiva | `while true; do read -p "Pregunta:" res; case $res in ... esac; done` |
-| Leyendo un archivo línea por línea | `while read linea; do echo $linea; done < archivo.txt` |
-| Bucle infinito | `while true; do ... done` |
-| `while` con `break` | `if [ "$i" -eq 5 ]; then break; fi` |
-| `while` con `continue` | `if [ "$i" -eq 3 ]; then continue; fi` |
-| `until` (versión inversa de `while`) | `until [ "$i" -gt 5 ]; do ... done` |
+
+| Tipo de `while`                         | Ejemplo                                                                 |
+| ----------------------------------------- | ----------------------------------------------------------------------- |
+| Bucle con contador                        | `while [ "$i" -le 5 ]; do ... done`                                   |
+| Esperando entrada del usuario             | `while [ "$var" != "salir" ]; do read var; done`                      |
+| Encuesta interactiva                      | `while true; do read -p "Pregunta:" res; case $res in ... esac; done` |
+| Leyendo un archivo línea por línea      | `while read linea; do echo $linea; done < archivo.txt`                |
+| Bucle infinito                            | `while true; do ... done`                                             |
+| `while` con `break`                   | `if [ "$i" -eq 5 ]; then break; fi`                                   |
+| `while` con `continue`                | `if [ "$i" -eq 3 ]; then continue; fi`                                |
+| `until` (versión inversa de `while`) | `until [ "$i" -gt 5 ]; do ... done`                                   |
 
 ---
 
 ## 🎯 **Conclusión**
+
 - `while` se ejecuta **mientras la condición sea verdadera**.
 - Se usa para **bucles indefinidos**, leer archivos, esperar entrada, encuestas, etc.
 - `break` detiene el bucle, `continue` salta una iteración.

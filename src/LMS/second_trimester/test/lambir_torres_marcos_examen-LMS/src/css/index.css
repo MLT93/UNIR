@@ -1,0 +1,225 @@
+/* SETS */
+@font-face {
+  /* Set Typography */
+  font-family: 'Breaking Bad';
+  src: url(../assets/font/Breaking_Bad.ttf) format('woff');
+  font-weight: 400;
+}
+
+:root {
+  /* Set Vars & Set Font */
+  --color-white: rgb(255, 255, 255);
+  --color-night: #0e0e0e;
+  --color-gray: #2a2a2a;
+
+  --primary-font: 'Breaking Bad', Helvetica;
+  font-size: 16px;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  /* Set General Paddings, Margins & Set Scrollbar */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+
+  ::-webkit-scrollbar {
+    width: auto;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: darkslategray;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.4375rem var(--color-gray);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Set Theme */
+  :root {
+    --color-white: rgb(246, 244, 244);
+    --color-night: #0e0e0e;
+    --color-gray: #3a3a3a;
+    --color-green: #0c3e11;
+  }
+}
+
+area:-webkit-any-link {
+  cursor: pointer;
+}
+
+.wrapper {
+  width: 88%;
+  max-width: 76rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* MOBILE */
+body {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    /* 'nav    nav    nav' */
+    'main   main   main'
+    'aside  aside  aside'
+    'footer footer footer';
+  grid-template-rows: 21rem /* 3rem */ auto 5rem 5rem;
+
+  font-size: 100%;
+  background-color: var(--smoke-white);
+  font-family: var(--primary-font);
+  color: var(--black);
+
+  background: url('../../public/fondo.jpg') no-repeat center/cover fixed;
+}
+
+li {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+select {
+  margin: 0;
+  padding: 0;
+  outline: none;
+
+  font: inherit;
+  background: inherit;
+  width: min(60%, 15rem);
+}
+
+option {
+  background: inherit;
+  text-indent: 0;
+}
+
+select:active,
+option:active {
+  border: none;
+}
+
+header {
+  grid-area: header;
+}
+
+.main {
+  display: flex;
+}
+
+.header {
+  padding: 0.625rem 0.9375rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.header img[alt='Logo principal de Breaking Bad'] {
+  margin-top: 0.625rem;
+}
+
+.header h1[aria-describedby='Título de citación principal'] {
+  padding: 1.875rem 0.9375rem;
+
+  display: flex;
+  flex-flow: column wrap;
+
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--color-white);
+}
+
+nav {
+  grid-area: nav;
+  display: none;
+}
+
+.nav {
+  display: flex;
+  align-content: center;
+  padding: 0.625rem 0.9375rem;
+}
+
+.nav li {
+  padding: 0.625rem 0.9375rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav__modal {
+  display: none;
+}
+
+main {
+  grid-area: main;
+}
+
+.main img[alt='Poster principal de Breaking Bad'] {
+  width: 21rem;
+  height: auto;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border: outset brown 0.625rem;
+
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
+}
+
+aside {
+  grid-area: aside;
+}
+
+footer {
+  grid-area: footer;
+}
+
+/* PC */
+@media (width >= 1024px) {
+  body {
+    grid-template-areas:
+      'header header header'
+      /* 'nav    nav    nav' */
+      'main   main   main'
+      'footer footer footer';
+    grid-template-rows: 19rem /* 1rem */ auto 5rem;
+  }
+
+  aside {
+    display: none;
+  }
+
+  .header img[alt='Logo principal de Breaking Bad'] {
+    margin-top: none;
+  }
+
+  .header h1[aria-describedby='Título de citación principal'] {
+    flex-direction: row;
+
+    padding: 0.875rem 0.9375rem;
+
+    font-size: 2.5rem;
+  }
+
+  .main img[alt='Poster principal de Breaking Bad'] {
+    width: 43.75rem;
+    height: 18.75rem;
+  }
+}
