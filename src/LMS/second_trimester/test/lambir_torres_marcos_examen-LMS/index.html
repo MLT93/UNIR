@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -6,78 +6,238 @@
     <meta name="description" content="Description of this file" />
     <meta name="keywords" content="HTML, Web, Tests" />
     <meta name="author" content="Marcos Lambir Torres" />
-    <link rel="icon" type="image/svg+xml" href="public/favicons/favicon-32x32.png" />
-    <link rel="shortcut icon" href="public/favicons/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="public/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="public/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="public/favicons/favicon-16x16.png" />
-    <link rel="manifest" href="public/favicons/site.webmanifest" />
-    <link rel="stylesheet" href="src/css/index.css" />
-    <title>Breaking Bad</title>
+    <link rel="shortcut icon" href="./img/arcade.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>StreetFighter-UNIR</title>
   </head>
   <body>
     <header>
-      <section class="header">
-        <img
-          src="./src/assets/img/logo.PNG"
-          alt="Logo principal de Breaking Bad"
-          title="Logo principal de Breaking Bad"
-        />
-        <h1 aria-describedby="Título de citación principal">
-          <span>I did it for me. I liked it.</span>
-          <span>&nbsp;I was good at it.</span>
-          <span>&nbsp;And, I was really... I was alive.</span>
-        </h1>
-      </section>
+      <h1 class="title">To live is to fight to fight is to live</h1>
     </header>
 
-    <nav>
-      <ul class="nav">
-        <li></li>
-      </ul>
-      <div class="nav__modal"></div>
-    </nav>
-
     <main>
-      <section class="main">
-        <img
-          src="./src/assets/img/poster.jpg"
-          usemap="#image-map"
-          alt="Poster principal de Breaking Bad"
-          title="Poster principal de Breaking Bad"
-        />
+      <!-- START TABLE -->
+      <section>
+        <table class="table">
+          <!-- start title -->
+          <tr>
+            <th colspan="4">Street Fighter</th>
+          </tr>
+          <!-- end title -->
 
-        <map name="image-map">
-          <area
-            target="_self"
-            alt="Breaking title"
-            title="Breaking title"
-            href="./formulario.html"
-            coords="481,101,668,145"
-            shape="rect"
-            aria-label="Redirección al formulario"
-          />
-          <area
-            target="_self"
-            alt="Bad title"
-            title="Bad title"
-            href="./tabla__.html"
-            coords="544,148,626,181"
-            shape="rect"
-            aria-label="Redirección a al la tabla periódica"
-          />
-        </map>
+          <!-- start row 1 -->
+          <tr>
+            <td>
+              <span>ken</span>
+              <img src="./img/ken.png" alt="Ken" />
+            </td>
+            <td>
+              <span>Chun Li</span>
+              <img src="./img/ChunLi.png" alt="Chun Li" />
+            </td>
+            <td>
+              <span>Zangief</span>
+              <img src="./img/Zangief.png" alt="zangief" />
+            </td>
+            <td>
+              <span>Dhalsim</span>
+              <img src="./img/Dhalsim.png" alt="Dhalsim" />
+            </td>
+          </tr>
+          <!-- end row 1 -->
+
+          <!-- start row 2 -->
+          <tr>
+            <td>
+              <span>Ryu</span>
+              <img src="./img/Ryu.png" alt="Ryu" />
+            </td>
+            <td>
+              <span>E Honda</span>
+              <img src="./img/EHonda.png" alt="E Honda" />
+            </td>
+            <td>
+              <span>Blanka</span>
+              <img src="./img/Blanka.png" alt="Blanka" />
+            </td>
+            <td>
+              <span>Guille</span>
+              <img src="./img/Guille.png" alt="Guille" />
+            </td>
+          </tr>
+          <!-- end row 2 -->
+
+          <!-- start row 3 -->
+          <tr>
+            <td>
+              <span>T Hawk</span>
+              <img src="./img/THawk.png" alt="T Hawk" />
+            </td>
+            <td>
+              <span>Feilong</span>
+              <img src="./img/Feilong.png" alt="Feilong" />
+            </td>
+            <td>
+              <span>Dee Jay</span>
+              <img src="./img/DeeJay.png" alt="Dee Jay" />
+            </td>
+            <td>
+              <span>Cammy</span>
+              <img src="./img/Cammy.png" alt="Cammy" />
+            </td>
+          </tr>
+          <!-- end row 3 -->
+
+          <!-- start row 4 -->
+          <tr>
+            <td>
+              <span>Balrog</span>
+              <img src="./img/Balrog.png" alt="Balrog" />
+            </td>
+            <td>
+              <span>Vega</span>
+              <img src="./img/Vega.png" alt="Vega" />
+            </td>
+            <td>
+              <span>Sagat</span>
+              <img src="./img/Sagat.png" alt="Dagat" />
+            </td>
+            <td>
+              <span>M Bison</span>
+              <img src="./img/MBison.png" alt="M Bison" />
+            </td>
+          </tr>
+          <!-- end row 4 -->
+        </table>
       </section>
+      <!-- END TABLE -->
+
+      <!-- START FORM -->
+      <section>
+        <h2 class="subtitle">Formulario de Inscripción para jugar a Street Fighter</h2>
+        <form
+          id="form"
+          class="form"
+          action="https://www.example.com"
+          target="_blank"
+          method="post"
+          enctype="multipart/form-data"
+          role="form"
+          accept-charset="UTF-8"
+        >
+          <!-- start datos user -->
+          <fieldset>
+            <legend>Datos Personajes</legend>
+            <div>
+              <label class="block" for="nombre">Nombre:</label>
+              <input type="text" name="nombre" id="nombre" />
+            </div>
+            <div>
+              <label class="block" for="apellido">Apellido:</label>
+              <input type="text" name="apellido" id="apellido" />
+            </div>
+            <div>
+              <label class="block" for="direccion-postal">Dirección Postal:</label>
+              <input
+                type="text"
+                name="calle"
+                id="calle"
+                aria-labelledby="direccion-postal"
+                placeholder="Calle"
+              />
+              <input
+                type="text"
+                name="numCalle"
+                id="numCalle"
+                aria-labelledby="direccion-postal"
+                placeholder="Nº"
+              />
+              <input
+                type="text"
+                name="pisoCalle"
+                id="pisoCalle"
+                aria-labelledby="direccion-postal"
+                placeholder="Piso"
+              />
+              <input
+                type="text"
+                name="codPostCalle"
+                id="codPostCalle"
+                aria-labelledby="direccion-postal"
+                placeholder="Cod. Postal"
+              />
+              <input
+                type="text"
+                name="ciudadCalle"
+                id="ciudadCalle"
+                aria-labelledby="direccion-postal"
+                placeholder="Ciudad"
+              />
+            </div>
+            <div>
+              <label class="block" for="nick">Nick:</label>
+              <input type="text" name="nick" id="nick" />
+            </div>
+            <div>
+              <label class="block" for="email">Correo Electrónico:</label>
+              <input type="email" name="email" id="email" />
+            </div>
+          </fieldset>
+          <!-- end datos user -->
+
+          <!-- start sexo user input radio -->
+          <fieldset>
+            <legend>Sexo Usuario</legend>
+            <div class="block">
+              <input type="radio" name="sexo" id="hombre" value="Hombre" />
+              Hombre
+            </div>
+            <div class="block">
+              <input type="radio" name="sexo" id="mujer" value="Mujer" />
+              Mujer
+            </div>
+            <div>
+              <input type="radio" name="sexo" id="noGenero" value="Prefiero No Decir" />
+              Prefiero No Decir
+            </div>
+          </fieldset>
+          <!-- end sexo user input radio -->
+
+          <!-- start f-nacimiento date input -->
+          <fieldset>
+            <label for="fnacimiento">Fecha nacimiento</label>
+            <input type="date" name="fnacimiento" id="fnacimiento" />
+          </fieldset>
+          <!-- end f-nacimiento date input -->
+
+          <!-- start personaje select input-->
+          <fieldset>
+            <legend>Personajes</legend>
+            <label for="seleccPersonaje">Selecciona el personaje:</label>
+            <input type="text" name="seleccPersonaje" id="seleccPersonaje" />
+          </fieldset>
+          <!-- end personaje select input-->
+
+          <!-- start comentarios textarea-->
+          <fieldset>
+            <legend>Comentarios</legend>
+            <textarea id="comentarios" name="comentarios"></textarea>
+          </fieldset>
+          <!-- end comentarios textarea-->
+
+          <!-- start buttons -->
+          <div>
+            <button type="submit" name="enviarFormBtn" id="enviarFormBtn" aria-label="Mandar el formulario">
+              Enviar
+            </button>
+            <button type="reset" name="borrarFormBtn" id="borrarFormBtn" aria-label="Borrar el formulario">
+              Borrar
+            </button>
+          </div>
+          <!-- end buttons -->
+        </form>
+      </section>
+      <!-- END FORM -->
     </main>
-
-    <aside>
-      <div class="aside"></div>
-    </aside>
-
-    <footer>
-      <section class="footer"></section>
-    </footer>
-
-    <script type="module" src="src/js/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,211 @@
+/* SETS */
+@font-face {
+  /* Set Typography */
+  font-family: 'Street';
+  src: url(./font/street.otf) format('woff');
+  font-weight: 400;
+}
+
+:root {
+  /* Set Vars & Set Font */
+  --primary-font: 'Street';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  /* font-optical-sizing: auto; */
+}
+
+*,
+*::before,
+*::after {
+  /* Set General Paddings, Margins & Set Scrollbar */
+  /* margin: 0; */
+  /* padding: 0; */
+  /* border: 0; */
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 100%;
+  font-family: var(--primary-font);
+
+  background: url('./img/fondo2.jpg') no-repeat center/cover fixed;
+}
+
+area:-webkit-any-link {
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* select {
+  margin: 0;
+  padding: 0;
+  outline: none;
+
+  font: inherit;
+  background: inherit;
+  width: min(60%, 15rem);
+}
+
+option {
+  background: inherit;
+  text-indent: 0;
+}
+
+select:active,
+option:active {
+  border: none;
+} */
+
+/* .wrapper {
+  width: 88%;
+  max-width: 76rem;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+/* CUSTOM STYLES */
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline__block {
+  display: inline-block;
+}
+
+.title {
+  color: crimson;
+  font-size: 46px;
+  text-align: center;
+}
+
+.subtitle {
+  color: crimson;
+  font-size: 28px;
+  text-align: center;
+}
+
+.table {
+  width: 600px;
+  height: 800px;
+
+  background: black;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border: 10px outset rgb(237, 175, 5);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.table tr th {
+  width: 40px;
+  height: 45px;
+
+  color: whitesmoke;
+  background: url(./img/fondocabecera.jpg) no-repeat center/cover;
+
+  vertical-align: middle;
+
+  opacity: 0.5;
+
+  font-size: 40px;
+
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+
+.table tr td {
+  width: 40px;
+  height: 45px;
+
+  color: darkorange;
+
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+
+.form {
+  width: 600px;
+  height: 1100px;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding: auto;
+
+  background: black;
+  color: white;
+
+  font-family: Verdana;
+  font-size: 16px;
+
+  border: 10px outset rgb(237, 175, 5);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.form fieldset {
+  margin: 15px 0;
+  line-height: 2;
+}
+
+.form fieldset legend {
+  font-family: 'Street';
+  font-size: 14px;
+  color: rgb(237, 175, 5);
+}
+
+.form fieldset textarea {
+  width: calc(560px - 10px);
+  height: 160px;
+  margin: 0;
+}
+
+.form div button {
+  width: 200px;
+  height: 50px;
+
+  background: crimson;
+  color: white;
+
+  font-family: 'Street';
+  font-size: 18px;
+
+  margin-left: 65px;
+  margin-bottom: 10px;
+
+  border: 1px solid crimson;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
