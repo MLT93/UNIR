@@ -30,7 +30,7 @@ Para usar DAO en un proyecto en **Eclipse con Java 21**, sigue estos pasos:
 
 ---
 
-### **3️⃣ Resumen**
+### **3️⃣ Conclusión**
 
 El **Patrón DAO en Java** ayuda a organizar el acceso a bases de datos separando la lógica de negocio de la lógica de persistencia.
 
@@ -52,6 +52,14 @@ El **Patrón DAO (Data Access Object)** está relacionado con el **Patrón MVC (
 | **Ubicación en MVC** | Generalmente, es parte del**Modelo** en MVC.                       | Es una arquitectura completa con tres capas.                                                                                         |
 | **Responsabilidad**   | Se encarga de conectar con la base de datos y ejecutar operaciones CRUD. | Divide la aplicación en partes para organizar el código y mejorar la mantenibilidad.                                               |
 | **Ejemplo de uso**    | `UsuarioDAO` maneja la consulta y manipulación de datos en la BD.     | El**Modelo** maneja los datos, la **Vista** muestra la información y el **Controlador** coordina la interacción. |
+
+#### **📌 Implementación de Patrones de Diseño**
+
+El uso de **patrones de diseño** ayuda a crear soluciones que son probadas, eficientes y escalables. Ejemplos de patrones de diseño comunes en el desarrollo UX incluyen:
+
+- **Patrón MVC (Modelo-Vista-Controlador)**: Se utiliza para separar la lógica que llama a los datos y la lógica de negocio (modelo), la interfaz que se muestra al usuario (vista) y el intermediario del control de flujo (controlador) modificando el modelo o la vista según sea necesario.
+- **Patrón DAO (Data-Access-Object)**: Se encarga de separar la lógica de acceso a datos de la lógica de negocio, permitiendo que las aplicaciones puedan cambiar la forma en que acceden a la base de datos sin afectar otras partes del sistema.
+- **Patrón de diseño responsivo**: Asegura que el producto se vea y funcione bien en diferentes dispositivos y tamaños de pantalla.
 
 ---
 
