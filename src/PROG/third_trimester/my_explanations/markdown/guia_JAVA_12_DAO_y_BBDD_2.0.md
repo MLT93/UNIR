@@ -35,6 +35,7 @@ import java.util.Objects;
 
 public class Usuario implements Serializable {
     // Atributos
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private int usuarioID;

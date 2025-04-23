@@ -68,6 +68,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Persona implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private String nombre;
     private int edad;
     private String email;
@@ -187,6 +190,9 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode
 public class Persona implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private String nombre;
     private int edad;
     private String email;
