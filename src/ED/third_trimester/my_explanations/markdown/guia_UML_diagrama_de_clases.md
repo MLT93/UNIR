@@ -11,12 +11,32 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
   - **Atributos**: Características o propiedades de la clase.
   - **Métodos (Operaciones)**: Comportamientos o funciones que la clase puede realizar.
 
+<img src="../img/represent_class_UML.png" alt="Img class" />
+
 - **Relaciones**:
   - **Asociación**: Conexión entre clases que indica una relación.
   - **Herencia (Generalización)**: Una clase hija hereda atributos y métodos de una clase padre.
   - **Agregación**: Relación "tiene un", donde una clase contiene a otra, pero ambas pueden existir independientemente.
   - **Composición**: Relación fuerte de "parte de", donde la existencia de una clase depende de la otra.
   - **Dependencia**: Una clase utiliza o depende de otra para funcionar. 
+
+<img src="../img/notation_diagram_clases_UML.png" alt="Img notation" />
+
+- **Interfaz**:
+  - **<<Interfaz>>**: En la parte superior, indica que es una `Interface`.
+  - **Nombre**: En la parte superior indica el nombre de la interfaz.
+  - **Atributos**: Suele quedar vacío.
+  - **Métodos**: Los métodos que desarrolla la clase.
+  - **Realización o Implementación (Implements)**: Una clase que implementa la interfaz se conectará a la interfaz con una línea discontinua y una flecha hueca. **[Interfaces UML](https://www.ibm.com/docs/en/rational-soft-arch/9.6.1?topic=diagrams-interfaces)**.
+
+<img src="../img/represent_interface_UML.png" alt="Img interface" />
+
+- **Paquetes**:
+  - **Nombre**: El nombre del paquete.
+  - **Importación de paquete**: Indica que los elementos públicos de un paquete están disponibles para otro. Se representa con una línea discontinua con una flecha abierta apuntando hacia el paquete importado.
+  - **Fusión de paquete**: Combina dos paquetes, fusionando sus contenidos. Se representa con una línea discontinua con una flecha abierta apuntando hacia el paquete que se va a fusionar. **[Paquetes UML](https://www.geeksforgeeks.org/package-diagram-introduction-elements-use-cases-and-benefits/)**
+
+<img src="../img/represent_package_UML.png" alt="Img package" />
 
 ---
 
