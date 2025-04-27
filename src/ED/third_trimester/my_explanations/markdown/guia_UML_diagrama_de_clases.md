@@ -1,6 +1,6 @@
 ### 📌 **¿Qué es un diagrama de clases UML?**
 
-Un **diagrama de clases UML** es una representación visual de la estructura estática de un sistema orientado a objetos. Muestra las clases del sistema, sus atributos, métodos y las relaciones entre ellas. Es fundamental para comprender y diseñar la arquitectura de software. 
+Un **diagrama de clases UML** es una representación visual de la estructura estática de un sistema orientado a objetos. Muestra las clases del sistema, sus atributos, métodos y las relaciones entre ellas. Es fundamental para comprender y diseñar la arquitectura de software.
 
 ---
 
@@ -18,12 +18,12 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
   - **Herencia (Generalización)**: Una clase hija hereda atributos y métodos de una clase padre.
   - **Agregación**: Relación "tiene un", donde una clase contiene a otra, pero ambas pueden existir independientemente.
   - **Composición**: Relación fuerte de "parte de", donde la existencia de una clase depende de la otra.
-  - **Dependencia**: Una clase utiliza o depende de otra para funcionar. 
+  - **Dependencia**: Una clase utiliza o depende de otra para funcionar.
 
 <img src="../img/notation_diagram_clases_UML.png" alt="Img notation" />
 
 - **Interfaz**:
-  - **<<Interfaz>>**: En la parte superior, indica que es una `Interface`.
+  - **<`<Interfaz>`>**: En la parte superior, indica que es una `Interface`.
   - **Nombre**: En la parte superior indica el nombre de la interfaz.
   - **Atributos**: Suele quedar vacío.
   - **Métodos**: Los métodos que desarrolla la clase.
@@ -83,7 +83,7 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
 - **Herencia**: Una clase deriva de otra.
 - **Agregación**: Una clase contiene a otra, pero ambas pueden existir por separado.
 - **Composición**: Una clase contiene a otra, y la existencia de la contenida depende de la contenedora.
-- **Dependencia**: Una clase utiliza a otra para realizar una función. 
+- **Dependencia**: Una clase utiliza a otra para realizar una función.
 
 💡 **Ejemplo**: Un "Usuario" puede tener múltiples "Préstamos".
 
@@ -104,7 +104,6 @@ Es importante aclarar que en UML, la **agregación** y la **herencia** (represen
 - **Definición**: Una clase hija hereda atributos y métodos de una clase padre, estableciendo una relación jerárquica.
 - **Ejemplo**: Una clase `Usuario` que extiende de una clase `CrudGenerico`, heredando sus métodos para operaciones CRUD.
 - **Representación en UML**: Una línea sólida con una punta de flecha sin rellenar apuntando hacia la clase padre.  **[Relaciones de diagramas de clases en UML explicadas con ejemplos](https://creately.com/blog/es/diagramas/relaciones-de-diagrama-de-clases-uml-explicadas-con-ejemplos/)**.
-
 
 #### 🧠 **Analogía para entender la diferencia**
 
@@ -139,14 +138,66 @@ Estas herramientas ofrecen plantillas y símbolos UML para facilitar la creació
 
 ---
 
+### 🔐 **Símbolos de visibilidad en UML**
+
+En los diagramas de clases UML, los símbolos como `+`, `-`, `#` y `~` se utilizan para indicar la **visibilidad** de los atributos y métodos de una clase. Esta notación es esencial para representar cómo los elementos de una clase pueden ser accedidos desde otras partes del sistema, promoviendo así el principio de encapsulamiento en la programación orientada a objetos. **[UML Class Diagrams: All you need to know - JointJS](https://www.jointjs.com/blog/uml-class-diagrams?utm_source=chatgpt.com)**.
+
+| Símbolo | Visibilidad                         | Acceso permitido a...                                             |
+| -------- | ----------------------------------- | ----------------------------------------------------------------- |
+| `+`    | **Pública** (`public`)     | Cualquier clase. Desde cualquier lado                             |
+| `-`    | **Privada** (`private`)     | Solo la propia clase. Dentro de la misma clase                    |
+| `#`    | **Protegida** (`protected`) | La clase y sus subclases (herencia) |
+| `~`    | **De paquete** (`package`)  | Clases dentro del mismo paquete o módulo                         |
+
+#### **1️⃣ Ejemplo práctico**
+
+Imagina una clase `Usuario` con los siguientes atributos y métodos:
+
+```ts
++nombre: String
+-contraseña: String
+#email: String
+~fechaRegistro: Date
+
++iniciarSesion(): boolean
+#validarEmail(): void
+-cifrarContraseña(): String
+~actualizarFechaRegistro(): void
+```
+
+- `+nombre`: Es accesible desde cualquier parte del sistema y sus instancias.
+- `-contraseña`: Solo puede ser accedida dentro de la clase `Usuario` y nada más.
+- `#email`: Puede ser accedida por la clase `Usuario` y por una clase que la herede.
+- `~fechaRegistro`: Es accesible por clases dentro del mismo paquete.
+
+#### **2️⃣ Importancia de la visibilidad**
+
+Utilizar correctamente estos modificadores de visibilidad ayuda a:
+
+- **Encapsular** los datos, protegiendo la integridad del objeto.
+- **Controlar** el acceso a los miembros de la clase, evitando usos indebidos.
+- **Facilitar** el mantenimiento y la evolución del código al tener interfaces claras.
+
+Por ejemplo, al marcar un atributo como `private`, se asegura que solo métodos internos de la clase puedan modificarlo, lo que previene cambios inesperados desde otras partes del sistema. **[Acceso a miembros protegidos en JAVA](https://www.geeksforgeeks.org/accessing-protected-members-in-java/)**.
+
+#### **3️⃣ Consejo práctico**
+
+Al diseñar tus clases: **[Visibility notation in UML class diagrams](https://softwareengineering.stackexchange.com/questions/311549/visibility-notation-in-uml-class-diagrams?utm_source=chatgpt.com)**
+
+- Utiliza `private` para atributos que no deben ser modificados directamente desde fuera de la clase.
+- Emplea `protected` cuando esperas que subclases necesiten acceder o modificar ciertos miembros.
+- Aplica `public` solo a aquellos métodos o atributos que deben estar disponibles para otras clases.
+- Considera `package` (`~`) cuando trabajas en sistemas donde la organización en paquetes es relevante y deseas limitar el acceso a ciertas clases dentro del mismo paquete.
+
+Este enfoque promueve un diseño más robusto y alineado con los principios de la programación orientada a objetos.
+
+---
+
 ### 🧠 **Trucos para simplificar la creación de diagramas de clases UML**
 
 - 🔹 **Empieza con lo esencial**: Identifica primero las clases y relaciones más importantes.
-
 - 🔹 **Utiliza nombres claros y descriptivos**: Facilita la comprensión del diagrama.
-
 - 🔹 **Evita la sobrecarga de información**: No incluyas todos los detalles en un solo diagrama; es mejor dividir en partes si es necesario.
-
 - 🔹 **Revisa y valida**: Asegúrate de que el diagrama refleje correctamente los requisitos y funcionalidades del sistema.
 
 ---
@@ -158,10 +209,10 @@ Estas herramientas ofrecen plantillas y símbolos UML para facilitar la creació
 - **[La Guía Fácil de los Diagramas de Clases UML | Tutorial - Creately](https://creately.com/blog/es/diagramas/tutorial-de-diagrama-de-clases/)**
 - **[Guía completa para entender el diagrama de clases UML básico](https://boardmix.com/es/knowledge/class-diagram/)**
 - **[Diagrama de clases: Qué es, cómo hacerlo y ejemplos | Miro](https://miro.com/es/diagrama/que-es-diagrama-clases-uml/)**
+- **[What is Class Diagram? - Visual Paradigm](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-class-diagram/?utm_source=chatgpt.com)**
 
 ---
 
 ### 🎯 **Conclusión**
 
 Los diagramas de clases UML son herramientas esenciales para modelar la estructura de sistemas orientados a objetos. Al identificar correctamente las clases, sus atributos, métodos y relaciones, se facilita la comprensión, diseño y mantenimiento del software. Utilizar notaciones estándar y herramientas adecuadas asegura una comunicación efectiva entre todos los involucrados en el proyecto.
-
