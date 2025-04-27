@@ -100,29 +100,6 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
 
 ---
 
-### 🔧 **Diferencias clave entre Agregación y Herencia (`extends`)**
-
-Es importante aclarar que en UML, la **agregación** y la **herencia** (representada por `extends` en lenguajes como Java) son conceptos distintos, aunque ambos describen relaciones entre clases.
-
-#### 🧩 **Agregación (Relación "tiene un")**
-
-- **Definición**: Es una forma de asociación que indica que una clase contiene a otra como parte de su estructura, pero ambas pueden existir independientemente.
-- **Ejemplo**: Una clase `Equipo` que contiene una lista de objetos `Jugador`. Si se elimina el `Equipo`, los `Jugador` pueden seguir existiendo.
-- **Representación en UML**: Una línea con un rombo blanco en el extremo de la clase contenedora.  **[Diagrama de clases](https://es.wikipedia.org/wiki/Diagrama_de_clases)**.
-
-#### 🧬 **Herencia (`extends`) (Relación "es un")**
-
-- **Definición**: Una clase hija hereda atributos y métodos de una clase padre, estableciendo una relación jerárquica.
-- **Ejemplo**: Una clase `Usuario` que extiende de una clase `CrudGenerico`, heredando sus métodos para operaciones CRUD.
-- **Representación en UML**: Una línea sólida con una punta de flecha sin rellenar apuntando hacia la clase padre.  **[Relaciones de diagramas de clases en UML explicadas con ejemplos](https://creately.com/blog/es/diagramas/relaciones-de-diagrama-de-clases-uml-explicadas-con-ejemplos/)**.
-
-#### 🧠 **Analogía para entender la diferencia**
-
-- **Agregación**: Piensa en una **biblioteca** que contiene **libros**. La biblioteca "tiene" libros, pero los libros pueden existir fuera de la biblioteca.
-- **Herencia**: Considera un **automóvil** que es un tipo de **vehículo**. Aquí, el automóvil "es un" vehículo y hereda sus características.
-
----
-
 #### **4️⃣ Aplicar notaciones UML**
 
 📍 **¿Cómo representar visualmente las clases y sus relaciones?**
@@ -231,6 +208,7 @@ Este enfoque promueve un diseño más robusto y alineado con los principios de l
 - **[UML Aggregation vs Composition - Visual Paradigm](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-aggregation-vs-composition/)**
 - **[Relaciones entre Clases: Asociación, Agregación, Composición y ...](https://m.youtube.com/watch?v=qVoeMHMG4wc)**
 - **[Tipos de relaciones UML: asociación, dependencia, generalización](https://www.guru99.com/es/uml-relationships-with-example.html)**
+- **[Relaciones de diagramas de clases en UML explicadas con ejemplos](https://creately.com/blog/es/diagramas/relaciones-de-diagrama-de-clases-uml-explicadas-con-ejemplos/)**
 
 ---
 
