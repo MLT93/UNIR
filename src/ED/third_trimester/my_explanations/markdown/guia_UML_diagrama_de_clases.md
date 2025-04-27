@@ -222,7 +222,6 @@ Este enfoque promueve un diseño más robusto y alineado con los principios de l
 ### 🔗 **Recursos adicionales**
 
 - **[Video tutorial sobre diagramas de clases UML (el mejor video)](https://www.youtube.com/watch?v=6XrL5jXmTwM&list=PLUoebdZqEHTxpGCwKrb82cIvHNoNaBb4R&index=4)**
-- **[Relaciones entre Clases: Asociación, Agregación, Composición y ...](https://m.youtube.com/watch?v=qVoeMHMG4wc)**
 - **[Tutorial de diagrama de clases UML - Lucidchart](https://www.lucidchart.com/pages/es/tutorial-de-diagrama-de-clases-uml)**
 - **[La Guía Fácil de los Diagramas de Clases UML | Tutorial - Creately](https://creately.com/blog/es/diagramas/tutorial-de-diagrama-de-clases/)**
 - **[Guía completa para entender el diagrama de clases UML básico](https://boardmix.com/es/knowledge/class-diagram/)**
@@ -230,6 +229,7 @@ Este enfoque promueve un diseño más robusto y alineado con los principios de l
 - **[What is Class Diagram? - Visual Paradigm](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-class-diagram/?utm_source=chatgpt.com)**
 - **[Relaciones de diagramas de clases en UML explicadas con ejemplos](https://creately.com/blog/es/diagramas/relaciones-de-diagrama-de-clases-uml-explicadas-con-ejemplos/)**
 - **[UML Aggregation vs Composition - Visual Paradigm](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-aggregation-vs-composition/)**
+- **[Relaciones entre Clases: Asociación, Agregación, Composición y ...](https://m.youtube.com/watch?v=qVoeMHMG4wc)**
 - **[Tipos de relaciones UML: asociación, dependencia, generalización](https://www.guru99.com/es/uml-relationships-with-example.html)**
 
 ---
