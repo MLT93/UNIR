@@ -1,4 +1,4 @@
-### 📌 **¿Qué es un diagrama de clases UML?**
+### 🤔 **¿Qué es un diagrama de clases UML?**
 
 Un **diagrama de clases UML** es una representación visual de la estructura estática de un sistema orientado a objetos. Muestra las clases del sistema, sus atributos, métodos y las relaciones entre ellas. Es fundamental para comprender y diseñar la arquitectura de software.
 

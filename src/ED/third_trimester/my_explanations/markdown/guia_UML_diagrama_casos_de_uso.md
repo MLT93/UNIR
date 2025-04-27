@@ -1,4 +1,4 @@
-### 📌 **¿Qué es un diagrama de casos de uso UML?**
+### 🤔 **¿Qué es un diagrama de casos de uso UML?**
 
 Un **diagrama de casos de uso UML** representa gráficamente las interacciones entre los **actores** (usuarios o sistemas externos) y el **sistema** que se está modelando, mostrando las funcionalidades (casos de uso) que el sistema ofrece. Es una herramienta esencial para capturar los requisitos funcionales y comprender el comportamiento del sistema desde la perspectiva del usuario. **[Diagrama de casos de uso](https://es.wikipedia.org/wiki/Diagrama_de_casos_de_uso?utm_source=chatgpt.com)**.
 
