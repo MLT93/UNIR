@@ -32,6 +32,8 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
 
 <img src="../img/notation_diagram_clases_UML.png" alt="Img notation" />
 
+<div style="page-break-after: always;"></div>
+
 - **Interfaz**:
   - **<`<Interfaz>`>**: En la parte superior, indica que es una `Interface`.
   - **Nombre**: En la parte superior indica el nombre de la interfaz.
@@ -60,6 +62,8 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
 
 ✅ **Comunicar el diseño**: Proporciona una visión clara para todos los stakeholders del proyecto.
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 ### 🚀 **Guía paso a paso para crear un diagrama de clases UML**
@@ -72,8 +76,6 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
 
 💡 **Ejemplo**: En un sistema de gestión de biblioteca, las clases podrían ser "Libro", "Usuario", "Préstamo".
 
----
-
 #### **2️⃣ Definir atributos y métodos de cada clase**
 
 📍 **¿Qué características y comportamientos tiene cada clase?**
@@ -82,8 +84,6 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
 - **Métodos**: Funciones que la clase puede realizar (e.g., prestar(), devolver()).
 
 💡 **Ejemplo**: La clase "Libro" podría tener atributos como "título" y "autor", y métodos como "prestar()" y "devolver()".
-
----
 
 #### **3️⃣ Establecer relaciones entre clases**
 
@@ -98,8 +98,6 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
 
 💡 **Ejemplo**: Un "Equipo" puede tener "Jugadores" pero los jugadores pueden existir sin el equipo.
 
----
-
 #### **4️⃣ Aplicar notaciones UML**
 
 📍 **¿Cómo representar visualmente las clases y sus relaciones?**
@@ -111,8 +109,9 @@ Un **diagrama de clases UML** es una representación visual de la estructura est
   - Rombo vacío para agregación.
   - Rombo relleno para composición.
   - Línea discontinua con flecha para dependencia.
+  - Línea discontinua con flecha vacía para realización.
 
----
+<div style="page-break-after: always;"></div>
 
 #### **5️⃣ Utilizar herramientas de diagramación**
 
@@ -158,6 +157,8 @@ Imagina una clase `Usuario` con los siguientes atributos y métodos:
 - `#email`: Puede ser accedida por la clase `Usuario` y por una clase que la herede.
 - `~fechaRegistro`: Es accesible por clases dentro del mismo paquete.
 
+<div style="page-break-after: always;"></div>
+
 #### **2️⃣ Importancia de la visibilidad**
 
 Utilizar correctamente estos modificadores de visibilidad ayuda a:
@@ -187,6 +188,8 @@ Este enfoque promueve un diseño más robusto y alineado con los principios de l
 - 🔹 **Utiliza nombres claros y descriptivos**: Facilita la comprensión del diagrama.
 - 🔹 **Evita la sobrecarga de información**: No incluyas todos los detalles en un solo diagrama; es mejor dividir en partes si es necesario.
 - 🔹 **Revisa y valida**: Asegúrate de que el diagrama refleje correctamente los requisitos y funcionalidades del sistema.
+
+<div style="page-break-after: always;"></div>
 
 ---
 
