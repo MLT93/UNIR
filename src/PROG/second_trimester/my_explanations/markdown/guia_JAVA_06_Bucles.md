@@ -42,11 +42,13 @@ public class BucleFor {
 ```
 
 **Explicación:**
+
 - El bucle comienza con `i = 1`.
 - Se ejecuta mientras `i <= 5`.
 - Después de cada iteración, `i` se incrementa en 1.
-  
+
 **Salida:**
+
 ```
 El valor de i es: 1
 El valor de i es: 2
@@ -68,6 +70,7 @@ public class BucleForDecreciente {
 ```
 
 **Salida:**
+
 ```
 El valor de i es: 5
 El valor de i es: 4
@@ -103,11 +106,13 @@ public class BucleWhile {
 ```
 
 **Explicación:**
+
 - El bucle comienza con `i = 1`.
 - Se ejecuta mientras `i <= 5`.
 - Después de cada iteración, `i` se incrementa en 1 (manualmente).
 
 **Salida:**
+
 ```
 El valor de i es: 1
 El valor de i es: 2
@@ -116,7 +121,7 @@ El valor de i es: 4
 El valor de i es: 5
 ```
 
-#### **Ejemplo: Bucle `while` con condición falsa al principio**
+**Ejemplo: Bucle `while` con condición falsa al principio**
 
 ```java
 public class BucleWhileFalso {
@@ -130,8 +135,62 @@ public class BucleWhileFalso {
 ```
 
 **Salida:**
+
 ```
 (No imprime nada, ya que la condición es falsa desde el principio.)
+```
+
+**Ejemplo: Bucle `while` + `switch` para crear un menú (es poco usado para para crear menús)**
+
+```java
+import java.util.Scanner;
+
+public class MenuWhileSwitch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int option = 0;
+
+        System.out.println("\n\r--- MENÚ PRINCIPAL ---\n\r");
+
+        while (option != 3) {
+            System.out.println("1. Saludar");
+            System.out.println("2. Mostrar hora");
+            System.out.println("3. Salir");
+            System.out.print("Elige una opción: ");
+            option = sc.nextInt();
+
+            switch (option) {
+                case 1:
+                    System.out.println("¡Hola, usuario!");
+                    break;
+                case 2:
+                    System.out.println("Hora actual: " + java.time.LocalTime.now());
+                    break;
+                case 3:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        }
+
+        sc.close();
+    }
+}
+```
+
+**Ejemplo: Bucle `while` para la entrada del usuario (se usa bastante para pedir info al usuario)**
+
+```java
+Scanner sc = new Scanner(System.in);
+int edad;
+System.out.print("Introduce tu edad: ");
+edad = sc.nextInt();
+while (edad < 0 || edad > 120) {
+    System.out.print("Edad no válida. Introduce tu edad: ");
+    edad = sc.nextInt();
+}
+
 ```
 
 ---
@@ -151,7 +210,7 @@ do {
 ```java
 public class BucleDoWhile {
     public static void main(String[] args) {
-        int i = 1;
+        int i = 6;
         do {
             System.out.println("El valor de i es: " + i);
             i++;
@@ -161,16 +220,56 @@ public class BucleDoWhile {
 ```
 
 **Explicación:**
+
 - El bloque de código se ejecuta al menos una vez, aunque la condición `i <= 5` no sea verdadera en el primer ciclo.
 - Después de cada iteración, `i` se incrementa en 1.
 
 **Salida:**
+
 ```
 El valor de i es: 1
 El valor de i es: 2
 El valor de i es: 3
 El valor de i es: 4
 El valor de i es: 5
+```
+
+**Ejemplo: Bucle `do-while` + `switch` para crear un menú (se usa bastante para crear menús)**
+
+```java
+import java.util.Scanner;
+
+public class MenuDoWhileSwitch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+
+        do {
+            System.out.println("\n\r--- MENÚ PRINCIPAL ---\n\r");
+            System.out.println("1. Saludar");
+            System.out.println("2. Mostrar hora");
+            System.out.println("3. Salir");
+            System.out.print("Elige una opción: ");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("¡Hola, usuario!");
+                    break;
+                case 2:
+                    System.out.println("Hora actual: " + java.time.LocalTime.now());
+                    break;
+                case 3:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        } while (opcion != 3);
+
+        sc.close();
+    }
+}
 ```
 
 ---
@@ -191,7 +290,7 @@ for (tipoDeDato variable : colección) {
 public class BucleForEach {
     public static void main(String[] args) {
         int[] numeros = {1, 2, 3, 4, 5};
-        
+      
         for (int num : numeros) {
             System.out.println("El valor del número es: " + num);
         }
@@ -200,9 +299,11 @@ public class BucleForEach {
 ```
 
 **Explicación:**
+
 - El bucle recorre automáticamente el array `numeros` y asigna cada valor a la variable `num` en cada iteración.
 
 **Salida:**
+
 ```
 El valor del número es: 1
 El valor del número es: 2
