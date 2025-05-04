@@ -28,7 +28,7 @@ public class Singleton {
         }
     }
 
-	public static synchronized Singleton getInstance() throws SQLException { // Función encargada de entregar el objeto con la conexión a la BBDD
+	public static Singleton getInstance() throws SQLException { // Función encargada de entregar el objeto con la conexión a la BBDD
 		if (instance == null) {
 			instance = new Singleton();
 		}

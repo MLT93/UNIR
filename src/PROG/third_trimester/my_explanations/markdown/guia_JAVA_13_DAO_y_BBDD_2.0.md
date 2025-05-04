@@ -27,62 +27,117 @@
 
 ---
 
-## **1️⃣ Clase `Usuario`**
+## **1️⃣ Clase Javabean**
 
 ```java
+package modelo.javabean;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario implements Serializable {
-    // Atributos
-    @Serial
+public class Cliente implements Serializable {
+
+	// Attributes
     private static final long serialVersionUID = 1L;
 
-    private int usuarioID;
-    private String usuarioNombre;
-    private String usuarioEmail;
-
-    // Constructor con todo
-    public Usuario(int id, String nombre, String email) {
-        super();
-
-        this.usuarioID = id;
-        this.usuarioNombre = nombre;
-        this.usuarioEmail = email;
-    }
+    private String cif;
+    private String nombre;
+    private String apellidos;
+    private String domicilio;
+    private double facturacionAnual;
+    private int numeroEmpledos;
 
     // Constructor con nada
-    public Usuario() {
+    public Cliente() {
         super();
     }
 
-    // getters & setters (quitando serialVersionUID)
-    public int getId() { return usuarioID; }
-    public String getNombre() { return usuarioNombre; }
-    public String getEmail() { return usuarioEmail; }
+    // Constructor con todo
+    public Cliente(String cif, String nombre, String apellidos, String domicilio, double facturacionAnual,
+            int numeroEmpledos) {
+        super();
+        this.cif = cif;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.domicilio = domicilio;
+        this.facturacionAnual = facturacionAnual;
+        this.numeroEmpledos = numeroEmpledos;
+    }
 
-    public void setId(int id) { this.usuarioID = id; }
-    public void setNombre(String nombre) { this.usuarioNombre = nombre; }
-    public void setEmail(String email) { this.usuarioEmail = email; }
+    // Getters & Setters
+    public String getCif() {
+        return cif;
+    }
 
-    // equals & hashCode (con la Primary Key de la Tabla)
+    public void setCif(String cif) {
+        this.cif = cif;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public double getFacturacionAnual() {
+        return facturacionAnual;
+    }
+
+    public void setFacturacionAnual(double facturacionAnual) {
+        this.facturacionAnual = facturacionAnual;
+    }
+
+    public int getNumeroEmpledos() {
+        return numeroEmpledos;
+    }
+
+    public void setNumeroEmpledos(int numeroEmpledos) {
+        this.numeroEmpledos = numeroEmpledos;
+    }
+
+    // Equals & Hash-Code
+    @Override
+    public int hashCode() {
+        return Objects.hash(cif);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof Usuario)) {
+        if (!(obj instanceof Cliente)) {
             return false;
         }
-        Usuario other = (Usuario) obj;
-        return usuarioID == other.usuarioID;
+        Cliente other = (Cliente) obj;
+        return Objects.equals(cif, other.cif);
     }
 
-    // toString (con todo, para los tests)
+    // ToString
     @Override
     public String toString() {
-        return "Usuario [ID=" + this.usuarioID + " NOMBRE=" + this.usuarioNombre + " EMAIL=" + this.usuarioEmail + "]";
+        return "Cliente [cif=" + cif + ", nombre=" + nombre + ", apellidos=" + apellidos + ", domicilio=" + domicilio
+                + ", facturacionAnual=" + facturacionAnual + ", numeroEmpledos=" + numeroEmpledos + "]";
     }
+
 }
 ```
 
@@ -93,220 +148,427 @@ public class Usuario implements Serializable {
 
 ---
 
-## **2️⃣ Singleton para la Conexión (`InstanceBbdd`)**
+## **2️⃣ Singleton para la Conexión**
+
+El Singleton va **abstract**.
 
 ```java
+package modelo.dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class InstanceBbdd {
-    private static Connection conexion;   // Conexión única compartida
-
-    // Constantes para la URL de conexión, usuario y contraseña
-    private final String URL = "jdbc:mysql://localhost:3306/mi_db";
-    private final String USUARIO = "usuario";
-    private final String PASSWORD = "password";
-
-    // 🔹 Constructor privado para evitar la creación de múltiples instancias
-    private InstanceBbdd() {
+public class Singleton {
+	
+	static Singleton instance; // La única instancia de la conexión porque el constructor es privado
+	
+	private Connection conn; // Sirve para establecer la conexión con DriverManager a la BBDD
+	private final String HTTP = "jdbc:mysql://localhost:3306/mi_db"; // Dirección de la BBDD
+	private final String USER = "user"; // Usuario de la BBDD
+	private final String PASS = "password"; // Pass del usuario de la BBDD
+	
+	// Constructor privado
+    private Singleton() {
+    	super();
+    	
         try {
-            // Establece la conexión única a la base de datos
-            conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-            System.out.println("CONEXIÓN ESTABLECIDA");
+            conn = DriverManager.getConnection(HTTP, USER, PASS);
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("CONEXIÓN no ESTABLECIDA");
+        } finally {
+        	if (conn != null) {
+        		System.out.println("Conexión establecida");
+        	}
         }
     }
 
-    // 🔹 Método estático que permite obtener la instancia única del Singleton
-    public static Connection getConexion() {
-        if (conexion == null) {
-            // Si la conexión aún no ha sido creada, la crea
-            new InstanceBbdd();
+	public static synchronized Singleton getInstance() throws SQLException { // Función encargada de entregar el objeto con la conexión a la BBDD
+		if (instance == null) {
+			instance = new Singleton();
+		}
+		return instance;
+	}
+
+	public Connection getConn() {
+		return conn;
+	}
+
+	public String getHTTP() {
+		return HTTP;
+	}
+
+	public String getUSER() {
+		return USER;
+	}
+
+	public String getPASS() {
+		return PASS;
+	}
+}
+```
+
+Otra forma de hacer un **Singleton** es utilizando `enum`, consiguiendo un código más simple y con más seguridad usando el doble check. Para garantizar que solo se cree una instancia en entornos multi-hilo, puedes utilizar el **patrón de doble verificación de bloqueo (Double-Checked Locking)**.
+
+```java
+public enum Singleton {
+    INSTANCE;
+
+    private Connection conn;
+    private final String HTTP = "jdbc:mysql://localhost:3306/mi_db";
+    private final String USER = "user";
+    private final String PASS = "password";
+
+    Singleton() {
+        try {
+            conn = DriverManager.getConnection(HTTP, USER, PASS);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return conexion;
+    }
+
+    public Connection getConnection() {
+        return conn;
     }
 }
 ```
 
 ### **Explicación**
 
-- **`private InstanceBbdd()`**: El **constructor es `private`** para evitar que se creen instancias adicionales de la clase fuera del Singleton. Esto asegura que solo haya **una única instancia de `InstanceBbdd`**, que administra la conexión a la base de datos.
+- **`private Singleton`**: El **constructor es `private`** para evitar que se creen instancias adicionales de la clase fuera del Singleton. Esto asegura que solo haya **una única instancia de `Singleton`**, que administra la conexión a la base de datos.
 - **`public static synchronized InstanceBbdd getInstance()`**:
 
-  - El **método es `static`** para poder acceder a él sin tener que crear un objeto `InstanceBbdd` primero.
-  - **`synchronized`** asegura que el método sea seguro para hilos concurrentes, garantizando que solo una instancia del Singleton se cree incluso en aplicaciones multihilo.
-
-- **`static`**: Las funciones y atributos son **estáticos** porque deben ser compartidos entre todos los objetos de la aplicación sin necesidad de instanciarlos. Esto hace que el Singleton pueda mantener una única conexión durante toda la ejecución.
+- El **método es `static synchronized`** para poder acceder a él sin tener que crear un objeto `Singleton` primero.
+  - **`static`**: Las funciones y atributos son **estáticos** porque deben ser compartidos entre todos los objetos de la aplicación sin necesidad de instanciarlos. Esto hace que el Singleton pueda mantener una única conexión durante toda la ejecución.
+  - **`synchronized`** asegura que el método sea seguro para hilos concurrentes, garantizando que solo una instancia del Singleton se cree incluso en aplicaciones multi-hilo.
 
 ---
 
-## **3️⃣ Clase Abstracta para DAO (`AbsLlamadaBbddGenerica`)**
+## **3️⃣ Clase abstract para manipular las sentencias SQL con Generic Types**
 
 ```java
+package modelo.dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public abstract class AbsLlamadaBbddGenerica {
-    protected Connection conexion; // Conexión desde el Singleton
+public abstract class AbsGenericSQL<T, ID> {
+	
+	// Attributes para manejar el SQL y la info en la BBDD
+    protected Connection conn; // Conexión a la BBDD
     protected PreparedStatement ps; // Quien prepara la sentencia y la ejecuta en el motor de la BBDD
     protected ResultSet rs; // Lee el fichero secuencial generado por el motor de la BBDD
-    protected String sql; // La consulta SQL
-    protected int rowsAffected; // Las filas afectadas por la consulta. Esto me ayuda a determinar si ha sido exitosa o menos
+    protected String sql; // La consulta SQL (opcional)
+    protected int rowsAffected; // Las filas afectadas por la consulta. Esto me ayuda a determinar si ha sido exitosa o menos (opcional)
 
-    // 🔹 Constructor para inicializar la conexión utilizando Singleton
-    public AbsLlamadaBbddGenerica() {
-        // Establece la conexión única a la base de datos desde el Singleton
-        this.conexion = InstanceBbdd.getConexion();
+    // Constructor
+    public AbsGenericSQL() {
+        try {
+            this.conn = Singleton.getInstance().getConn(); // Acá me conecto con el Singleton
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 ```
 
 ### **Explicación**
 
-- **`extends AbsLlamadaBbddGenerica`**:
-  - Cada **DAO (como `UsuarioDaoImpl`) extiende esta clase abstracta** para obtener la conexión a la base de datos de forma centralizada. Esto evita que cada clase DAO tenga que crear su propia conexión, haciendo el código más limpio y eficiente.
+- **`extends AbsGenericSQL`**:
+  - Cada **DAO (como `ClienteDaoImpl`) extiende esta clase abstracta** para obtener la conexión a la base de datos de forma centralizada. Esto evita que cada clase DAO tenga que crear su propia conexión, haciendo el código más limpio y eficiente.
 
 ---
 
-## **4️⃣ Interfaz `IUsuarioDao`**
+## **3️⃣.1️⃣ Interface para CRUD genérico**
 
 ```java
+package modelo.dao;
+
 import java.util.List;
 
-public interface IUsuarioDao {
-    void agregarUsuario(Usuario usuario);
-    Usuario obtenerUsuarioPorId(int id);
-    List<Usuario> obtenerTodosLosUsuarios();
-    void actualizarUsuario(Usuario usuario);
-    void eliminarUsuario(int id);
+public interface IGenericCRUD<T, ID> {
+
+	// Para el CRUD
+	List<T> findAll();
+	T findById(ID atributoPK);
+	int insertOne(T obj);
+	int updateOne(T obj);
+	int deleteById(ID atributoPK);
 }
 ```
 
 ### **Explicación**
 
-- **`implements IUsuarioDao`**:
+- **`extends IGenericCRUD`**:
+  - Extendemos esta interfaz en la interfaz donde definimos los métodos específicos para cada Entidad en particular. De ésta forma, podemos evitar repetir código y crear un CRUD único que implemente `List`.
+
+---
+
+## **4️⃣ Interface Javabean que extiende interface de CRUD genérico**
+
+```java
+package modelo.dao;
+
+import java.util.List;
+
+import modelo.javabean.Cliente;
+
+public interface IClienteDao extends IGenericCRUD<Cliente, String>{
+	
+	/* 
+	 * Métodos para manejar los clientes en específico 
+	 * Nos apoyamos en el 'extends' para adoptar el CRUD genérico
+	*/
+	String exportar(String nombreFichero);
+	List<Cliente> importar(String nombreFichero);
+}
+```
+
+### **Explicación**
+
+- **`implements IClienteDao`**:
   - Las clases que implementan esta interfaz deben proporcionar **implementaciones específicas** para los métodos definidos en la interfaz, como `agregarUsuario`, `obtenerUsuarioPorId`, etc.
   - Esto se encarga de definir las llamadas a la Tabla específica de la BBDD.
 
 ---
 
-## **5️⃣ Implementación `UsuarioDaoImpl`**
+## **5️⃣ Extends de la clase Abstract e Implements de la interface Javabean**
 
 ```java
-import java.sql.*;
+package modelo.dao;
+
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDaoImpl extends AbsLlamadaBbddGenerica implements IUsuarioDao {
+import modelo.javabean.Cliente;
 
-    // Recibo todos los métodos de mis otras clases donde tengo la conexión y los métodos necesarios
-    // No haría falta crear constructor porque lo tenemos por defecto, que sería un constructor sin nada con el super(); que llama al padre (la clase abstracta)
+public class ClienteDaoImpl extends AbsGenericSQL<Cliente, String> implements IClienteDao {
 
-    @Override
-    public void agregarUsuario(Usuario usuario) {
-        sql = "INSERT INTO usuarios (nombre, email) VALUES (?, ?)"; // Consulta SQL
-        rowsAffected = 0; // Inicializa el número de filas afectadas
+	String sql;
 
-        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
-            // 🔹 Asignamos los valores de los parámetros (?) en la consulta SQL
-            ps.setString(1, usuario.getNombre()); // Se asigna el nombre del usuario al primer '?'
-            ps.setString(2, usuario.getEmail());  // Se asigna el email del usuario al segundo '?'
+	@Override
+	public List<Cliente> findAll() {
 
-            rowsAffected = ps.executeUpdate(); // 🔹 Ejecuta la consulta (INSERT) y obtiene el número de filas afectadas
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+		sql = "SELECT * FROM clientes;";
+		Cliente cli = null;
+		List<Cliente> aux = new ArrayList<>();
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
 
-        System.out.println(rowsAffected > 0 ? "Usuario agregado correctamente." : "Error al agregar usuario.");
-    }
+			/*
+			 * Convertir mi 'ResultSet' en un 'ArrayList<>()' Para convertir el 'rs' en un
+			 * 'ArrayList<Cliente>()', hay que iterar sobre el ResultSet dentro de un
+			 * try-catch, crear un obj Cliente por cada fila (por eso se hace dentro del
+			 * bucle) y añadirlo a la lista. Luego recibimos el valor de cada columna dentro
+			 * del ResultSet o RowSet, se agrega al 'aux' y se devuelve
+			 */
+			while (rs.next()) {
+				cli = new Cliente();
 
-    @Override
-    public Usuario obtenerUsuarioPorId(int id) {
-        sql = "SELECT * FROM usuarios WHERE id = ?"; // Consulta SQL
-        Usuario usuario = null;
+				cli.setCif(rs.getString("cif"));
+				cli.setNombre(rs.getString("nombre"));
+				cli.setApellidos(rs.getString("apellidos"));
+				cli.setDomicilio(rs.getString("domicilio"));
+				cli.setFacturacionAnual(rs.getDouble("facturacion_anual"));
+				cli.setNumeroEmpledos(rs.getInt("numero_empleados"));
 
-        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
-            ps.setInt(1, id); // 🔹 Asignamos el valor de `id` al primer '?'
-            ResultSet rs = ps.executeQuery(); // 🔹 Ejecuta la consulta (SELECT)
+				aux.add(cli);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return aux;
+	}
 
-            if (rs.next()) {
-                usuario = new Usuario(rs.getInt("id"), rs.getString("nombre"), rs.getString("email"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+	@Override
+	public Cliente findById(String atributoPK) {
 
-        return usuario;
-    }
+		sql = "SELECT * FROM clientes WHERE cif = ?;";
+		/*
+		 * Itera, nuevo Obj por vuelta (RowSet), asignación de los valores de cada campo
+		 * en el Obj (setea en 'cli' y recibe de 'rs'. Todo dentro de try-catch y
+		 * devolvemos obj
+		 */
+		Cliente cli = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
 
-    @Override
-    public List<Usuario> obtenerTodosLosUsuarios() {
-        this.sql = "SELECT * FROM usuarios"; // Consulta SQL
+			while (rs.next()) {
+				cli = new Cliente();
 
-        try {
-            this.ps = this.conexion.prepareStatement(sql);
-            this.rs = this.ps.executeQuery() // 🔹 Ejecuta la consulta (SELECT)
+				cli.setCif(rs.getString("cif"));
+				cli.setNombre(rs.getString("nombre"));
+				cli.setApellidos(rs.getString("apellidos"));
+				cli.setDomicilio(rs.getString("domicilio"));
+				cli.setFacturacionAnual(rs.getDouble("facturacion_anual"));
+				cli.setNumeroEmpledos(rs.getInt("numero_empleados"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cli;
+	}
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+	@Override
+	public int insertOne(Cliente obj) {
 
-        return null;
-    }
+		sql = "INSERT INTO clientes (cif, nombre, apellidos, domicilio, facturacion_anual, numero_empleados) VALUES (?,?,?,?,?,?);";
+		/*
+		 * Itera, nuevo Obj por vuelta (RowSet), asignación de los valores de cada campo
+		 * en el Obj (setea en 'cli' y recibe de 'rs'. Todo dentro de try-catch y
+		 * devolvemos obj
+		 */
+		rowsAffected = 0;
+		try {
+			ps = conn.prepareStatement(sql); // No me hace falta iterar el 'rs' porque el valor que se introduce es nuevo
 
-    @Override
-    public void actualizarUsuario(Usuario usuario) {
-        String sql = "UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?"; // Consulta SQL
-        int numFilas = 0;
+			ps.setString(1, obj.getCif()); // Cada índice (el número) es la referencia de izq a dcha de cada VALUES correspondiente
+			ps.setString(2, obj.getNombre());
+			ps.setString(3, obj.getApellidos());
+			ps.setString(4, obj.getDomicilio());
+			ps.setDouble(5, obj.getFacturacionAnual());
+			ps.setInt(6, obj.getNumeroEmpledos());
 
-        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
-            ps.setString(1, usuario.getNombre()); // Asigna el nombre del usuario
-            ps.setString(2, usuario.getEmail());  // Asigna el email del usuario
-            ps.setInt(3, usuario.getId());        // Asigna el ID del usuario
+			rowsAffected = ps.executeUpdate();
 
-            numFilas = ps.executeUpdate(); // 🔹 Ejecuta la consulta (UPDATE)
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowsAffected;
+	}
 
-        System.out.println(numFilas > 0 ? "Usuario actualizado correctamente." : "Error al actualizar usuario.");
-    }
+	@Override
+	public int updateOne(Cliente obj) {
+		String sql = "update clientes set " + "nombre = ?," + "apellidos = ?," + "domicilio = ?,"
+				+ "facturacion_anual = ?," + "numero_empleados = ?" + " where cif = ?;";
+		rowsAffected = 0;
+		try {
 
-    @Override
-    public void eliminarUsuario(int id) {
-        String sql = "DELETE FROM usuarios WHERE id = ?"; // Consulta SQL
-        int numFilas = 0;
+			ps = conn.prepareStatement(sql);
 
-        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
-            ps.setInt(1, id); // Asigna el ID del usuario a eliminar
-            numFilas = ps.executeUpdate(); // 🔹 Ejecuta la consulta (DELETE)
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+			ps.setString(1, obj.getNombre());
+			ps.setString(2, obj.getApellidos());
+			ps.setString(3, obj.getDomicilio());
+			ps.setDouble(4, obj.getFacturacionAnual());
+			ps.setInt(5, obj.getNumeroEmpledos());
+			ps.setString(6, obj.getCif());
 
-        System.out.println(numFilas > 0 ? "Usuario eliminado correctamente." : "No se encontró el usuario.");
-    }
+			rowsAffected = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Error al actualizar el cliente");
+			return -1;
+		}
+
+		return rowsAffected;
+	}
+
+	@Override
+	public int deleteById(String atributoPK) {
+		String sql = "DELETE FROM clientes WHERE cif = ?;";
+
+		rowsAffected = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, atributoPK);
+
+			rowsAffected = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+
+		return rowsAffected;
+	}
+
+	@Override
+	public String exportar(String nombreFichero) {
+		File archivo = new File(nombreFichero);
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		String msj = null;
+
+		try {
+			fos = new FileOutputStream(archivo);
+			oos = new ObjectOutputStream(fos);
+
+			for (Cliente ele : findAll()) {
+				oos.writeObject(ele);
+			}
+
+			msj = "Clientes bien exportados";
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			msj = "Fichero no existe";
+		}
+
+		return msj;
+	}
+
+	@Override
+	public List<Cliente> importar(String nombreFichero) {
+		File archivo = new File(nombreFichero);
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		List<Cliente> aux = new ArrayList<Cliente>();
+		Cliente cli = null;
+
+		try {
+
+			fis = new FileInputStream(archivo);
+			ois = new ObjectInputStream(fis);
+
+			while (true) {
+				
+				try {
+					cli = (Cliente) ois.readObject();
+					aux.add(cli);
+					
+				} catch (EOFException e) {
+					break;
+				}
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return aux;
+	}
 }
 ```
 
 ### **Explicación**
 
-- **`ps.setString(1, usuario.getNombre())`** y **`ps.setInt(1, id)`**:
+- **`DELETE FROM clientes WHERE cif = ?;`**:
 
   - Se utilizan los **`?`** en las consultas SQL como **marcadores de posición**.
   - Los **marcadores de posición** se reemplazan con los valores correspondientes usando los métodos como `setString` y `setInt` de `PreparedStatement`.
+  - Esos marcadores se setean después en un `aux` iterando `rs` dentro de un try-catch y accediendo a los datos con `ps.setString(1, obj.getNombre());`, por ejemplo.
 
 - **`ResultSet rs = ps.executeQuery()`**:
 
   - **`executeQuery()`** se usa para **consultas SELECT**.
-  - **`ResultSet`** contiene el resultado de la consulta, y puedes iterar sobre él con `while(rs.next())`.
+  - Devuelve un **`ResultSet`** contiene el resultado de la consulta, y puedes iterar sobre él con `while(rs.next())`.
 
 - **`ps.executeUpdate()`**:
   - Se utiliza para **consultas INSERT, UPDATE y DELETE**, y devuelve el número de filas afectadas, lo cual es útil para comprobar si la operación fue exitosa.
+  - Devuelve un **`Int`** que define las rowsAffected en la BBDD (las líneas que han sido modificadas al ejecutar la consulta).
 
 ---
 
