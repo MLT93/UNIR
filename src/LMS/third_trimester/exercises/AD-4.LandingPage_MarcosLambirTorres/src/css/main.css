@@ -1,0 +1,44 @@
+.main {
+  display: flex;
+
+  margin-top: 30px;
+}
+
+.me {
+  width: 100%;
+  
+  display: flex;
+  
+  padding: 20px 10px;
+  
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.me__title {
+  margin-left: 10px;
+}
+
+.me__social {
+  margin-top: 20px;
+}
+
+.me__img {
+  width: 180px;
+  height: 180px;
+
+  margin-left: 10px;
+  
+  border: 5px solid rgb(220, 178, 39);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.me__skills {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
