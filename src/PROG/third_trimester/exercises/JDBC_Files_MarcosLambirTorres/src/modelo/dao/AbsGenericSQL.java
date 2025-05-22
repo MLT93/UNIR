@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public abstract class AbsGenericSQL<T, ID> {
 	
 	// Attributes para manejar el SQL y la info en la BBDD
-    protected Connection conn; // Conexión a la BBDD
+    protected Connection absConn; // Conexión a la BBDD
     protected PreparedStatement ps; // Quien prepara la sentencia y la ejecuta en el motor de la BBDD
     protected ResultSet rs; // Lee el fichero secuencial generado por el motor de la BBDD
     protected String sql; // La consulta SQL (opcional)
@@ -17,7 +17,7 @@ public abstract class AbsGenericSQL<T, ID> {
     // Constructor
     public AbsGenericSQL() {
         try {
-            this.conn = Singleton.getInstance().getConn(); // Acá me conecto con el Singleton
+            this.absConn = Singleton.getInstance().getConn(); // Acá me conecto con el Singleton. No se importa porque es el mismo paquete
 
         } catch (SQLException e) {
             e.printStackTrace();

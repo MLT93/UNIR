@@ -6,45 +6,30 @@
 
 En JDBC, los componentes principales son:
 
-1. **Driver JDBC**:  
-   Un controlador específico para cada tipo de base de datos que implementa la interfaz de JDBC. Este permite a Java comunicarse con la base de datos de manera eficiente.
-
-2. **Connection**:  
-   Representa la conexión a la base de datos. A través de esta conexión, puedes crear `Statement`, `PreparedStatement`, o `CallableStatement` para ejecutar las consultas SQL.
-
-3. **Statement/PreparedStatement**:  
-   Se utilizan para ejecutar las consultas SQL. `PreparedStatement` es más seguro y eficiente, ya que permite la ejecución de consultas con parámetros.
-
-4. **ResultSet**:  
-   Es el objeto que contiene los resultados de las consultas de tipo `SELECT`. Permite iterar sobre las filas devueltas por la base de datos.
-
-5. **SQLException**:  
-   Las excepciones en JDBC se manejan con `SQLException`. Este objeto se lanza cuando ocurre un error en cualquier etapa del proceso JDBC.
-
-6. **rowAffected**:  
+1. **Driver JDBC**:Un controlador específico para cada tipo de base de datos que implementa la interfaz de JDBC. Este permite a Java comunicarse con la base de datos de manera eficiente.
+2. **Connection**:Representa la conexión a la base de datos. A través de esta conexión, puedes crear `Statement`, `PreparedStatement`, o `CallableStatement` para ejecutar las consultas SQL.
+3. **Statement/PreparedStatement**:Se utilizan para ejecutar las consultas SQL. `PreparedStatement` es más seguro y eficiente, ya que permite la ejecución de consultas con parámetros.
+4. **ResultSet**:Es el objeto que contiene los resultados de las consultas de tipo `SELECT`. Permite iterar sobre las filas devueltas por la base de datos.
+5. **SQLException**:Las excepciones en JDBC se manejan con `SQLException`. Este objeto se lanza cuando ocurre un error en cualquier etapa del proceso JDBC.
+6. **rowAffected**:
    Es una variable que se utiliza para obtener el número de filas que se han visto afectadas por una consulta SQL (como un `INSERT`, `UPDATE` o `DELETE`). Es útil para saber si una consulta de modificación de datos ha tenido éxito o si ha cambiado algo en la base de datos.
 
 ---
 
 ### **📌 Flujo Básico de Trabajo con JDBC**
 
-1. **Cargar el Driver JDBC**:  
-   Primero se debe cargar el controlador correspondiente de la base de datos.
+1. **Cargar el Driver JDBC**:Primero se debe cargar el controlador correspondiente de la base de datos.
 
    ```java
    Class.forName("com.mysql.cj.jdbc.Driver"); // Cargar el driver para MySQL
    ```
-
-2. **Establecer la conexión a la base de datos**:  
-   Se establece la conexión utilizando `DriverManager`.
+2. **Establecer la conexión a la base de datos**:Se establece la conexión utilizando `DriverManager`.
 
    ```java
    Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mi_db", "usuario", "password");
    ```
+3. **Crear un `PreparedStatement`**:Una vez establecida la conexión, se crea un `PreparedStatement` para ejecutar consultas SQL. Usamos `PreparedStatement` para evitar inyecciones SQL y mejorar la eficiencia con parámetros dinámicos con una nomenclatura particular.
 
-3. **Crear un `PreparedStatement`**:  
-   Una vez establecida la conexión, se crea un `PreparedStatement` para ejecutar consultas SQL. Usamos `PreparedStatement` para evitar inyecciones SQL y mejorar la eficiencia con parámetros dinámicos con una nomenclatura particular. 
-   
    Para asignar valores en la consulta sql se utiliza `?` como variable (marcador de parámetro) y luego una función set + el tipo de dato (ej. ps.setInt, ps.setString...). El primer argumento de la función es el primer `?` que aparece en la consulta sql (el valor comienza siempre en 1, no en 0).
 
    ```java
@@ -59,17 +44,13 @@ En JDBC, los componentes principales son:
    ps.setString(1, "Ayudante");  // Establecer el primer parámetro en la consulta SQL
    ps.setString(2, "IT");  // Establecer el segundo parámetro en la consulta SQL
    ```
-
-4. **Ejecutar la consulta**:  
-   Si estamos ejecutando una consulta de tipo `SELECT`, obtenemos un `ResultSet`. Si es una consulta de tipo `UPDATE`, `DELETE`, o `INSERT`, usamos `executeUpdate()` para obtener el número de filas afectadas.
+4. **Ejecutar la consulta**:Si estamos ejecutando una consulta de tipo `SELECT`, obtenemos un `ResultSet`. Si es una consulta de tipo `UPDATE`, `DELETE`, o `INSERT`, usamos `executeUpdate()` para obtener el número de filas afectadas.
 
    ```java
    ResultSet rs = ps.executeQuery();  // Para consultas SELECT
    int rowAffected = ps.executeUpdate();  // Para consultas UPDATE, DELETE, INSERT
    ```
-
-5. **Procesar los resultados**:  
-   Para consultas `SELECT`, iteramos sobre el `ResultSet` y extraemos los valores de las columnas.
+5. **Procesar los resultados**:Para consultas `SELECT`, iteramos sobre el `ResultSet` y extraemos los valores de las columnas.
 
    ```java
    while (rs.next()) {
@@ -88,8 +69,7 @@ En JDBC, los componentes principales son:
        System.out.println("No se realizaron cambios en la base de datos.");
    }
    ```
-
-6. **Cerrar los recursos**:  
+6. **Cerrar los recursos**:
    Es importante cerrar la conexión, el `PreparedStatement`, y el `ResultSet` después de usarlos para evitar fugas de recursos.
 
    ```java
@@ -115,7 +95,7 @@ public class JdbcExample {
 
             // Establecer la conexión a la base de datos
             Connection conexion = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/mi_db", "usuario", "password");
+                    "jdbc:mysql://localhost:3306/nombre_BBDD", "usuario", "password");
 
             // Crear la consulta SQL para actualizar un registro
             String sql = "UPDATE usuarios SET nombre = ? WHERE id = ?";
@@ -147,13 +127,9 @@ public class JdbcExample {
 
 ### **📌 Explicación del Código:**
 
-1. **`ps.executeUpdate()`**:  
-   Este método se usa para ejecutar consultas `UPDATE`, `INSERT` o `DELETE`. En lugar de un `ResultSet`, devuelve un entero que indica cuántas filas fueron afectadas por la consulta. Este valor se almacena en la variable `rowAffected`.
-
-2. **`rowAffected > 0`**:  
-   Si `rowAffected` es mayor que 0, significa que la consulta ha modificado (o insertado/eliminado) al menos una fila en la base de datos. Si es 0, significa que no hubo cambios.
-
-3. **`PreparedStatement`**:  
+1. **`ps.executeUpdate()`**:Este método se usa para ejecutar consultas `UPDATE`, `INSERT` o `DELETE`. En lugar de un `ResultSet`, devuelve un entero que indica cuántas filas fueron afectadas por la consulta. Este valor se almacena en la variable `rowAffected`.
+2. **`rowAffected > 0`**:Si `rowAffected` es mayor que 0, significa que la consulta ha modificado (o insertado/eliminado) al menos una fila en la base de datos. Si es 0, significa que no hubo cambios.
+3. **`PreparedStatement`**:
    Es utilizado para ejecutar consultas con parámetros, protegiendo contra ataques de inyección SQL y mejorando la eficiencia de las consultas repetitivas.
 
 ---

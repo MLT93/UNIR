@@ -23,7 +23,7 @@ public class ClienteDaoImpl extends AbsGenericSQL<Cliente, String> implements IC
 		Cliente cli = null;
 		List<Cliente> aux = new ArrayList<>();
 		try {
-			ps = conn.prepareStatement(sql);
+			ps = absConn.prepareStatement(sql);
 			rs = ps.executeQuery();
 
 			/*
@@ -62,7 +62,7 @@ public class ClienteDaoImpl extends AbsGenericSQL<Cliente, String> implements IC
 		 */
 		Cliente cli = null;
 		try {
-			ps = conn.prepareStatement(sql);
+			ps = absConn.prepareStatement(sql);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -92,7 +92,7 @@ public class ClienteDaoImpl extends AbsGenericSQL<Cliente, String> implements IC
 		 */
 		rowsAffected = 0;
 		try {
-			ps = conn.prepareStatement(sql); // No me hace falta iterar el 'rs' porque el valor que se introduce es nuevo
+			ps = absConn.prepareStatement(sql); // No me hace falta iterar el 'rs' porque el valor que se introduce es nuevo
 
 			ps.setString(1, obj.getCif()); // Cada índice (el número) es la referencia de izq a dcha de cada VALUES correspondiente
 			ps.setString(2, obj.getNombre());
@@ -116,7 +116,7 @@ public class ClienteDaoImpl extends AbsGenericSQL<Cliente, String> implements IC
 		rowsAffected = 0;
 		try {
 
-			ps = conn.prepareStatement(sql);
+			ps = absConn.prepareStatement(sql);
 
 			ps.setString(1, obj.getNombre());
 			ps.setString(2, obj.getApellidos());
@@ -142,7 +142,7 @@ public class ClienteDaoImpl extends AbsGenericSQL<Cliente, String> implements IC
 
 		rowsAffected = 0;
 		try {
-			ps = conn.prepareStatement(sql);
+			ps = absConn.prepareStatement(sql);
 			ps.setString(1, atributoPK);
 
 			rowsAffected = ps.executeUpdate();

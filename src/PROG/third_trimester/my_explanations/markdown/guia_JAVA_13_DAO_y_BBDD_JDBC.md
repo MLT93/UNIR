@@ -12,17 +12,17 @@
 
 ### **🔹 `resultSet (rs)`**
 
-✔️ Contiene los datos devueltos por la consulta SQL.  
+✔️ Contiene los datos devueltos por la consulta SQL.
 ✔️ Se usa en combinación con `while(rs.next())` para iterar sobre los resultados.
 
 ### **🔹 `sql`**
 
-✔️ Variable que almacena la consulta SQL a ejecutar.  
+✔️ Variable que almacena la consulta SQL a ejecutar.
 ✔️ Se usa en conjunto con `preparedStatement`.
 
 ### **🔹 `rowsAffected`**
 
-✔️ Guarda el número de filas afectadas en operaciones **INSERT, UPDATE o DELETE**.  
+✔️ Guarda el número de filas afectadas en operaciones **INSERT, UPDATE o DELETE**.
 ✔️ Si `rowsAffected == 0`, significa que la consulta no tuvo efecto.
 
 ---
@@ -150,7 +150,7 @@ public class Cliente implements Serializable {
 
 ## **2️⃣ Singleton para la Conexión**
 
-El Singleton va **abstract**.
+El Singleton va con los atributos **private** menos la instancia. Es mejor hacer lo con **enum**.
 
 ```java
 package modelo.dao;
@@ -160,18 +160,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Singleton {
-	
+
 	static Singleton instance; // La única instancia de la conexión porque el constructor es privado
-	
+
 	private Connection conn; // Sirve para establecer la conexión con DriverManager a la BBDD
 	private final String HTTP = "jdbc:mysql://localhost:3306/mi_db"; // Dirección de la BBDD
 	private final String USER = "user"; // Usuario de la BBDD
 	private final String PASS = "password"; // Pass del usuario de la BBDD
-	
+
 	// Constructor privado
     private Singleton() {
     	super();
-    	
+  
         try {
             conn = DriverManager.getConnection(HTTP, USER, PASS);
         } catch (SQLException e) {
@@ -237,8 +237,8 @@ public enum Singleton {
 
 - **`private Singleton`**: El **constructor es `private`** para evitar que se creen instancias adicionales de la clase fuera del Singleton. Esto asegura que solo haya **una única instancia de `Singleton`**, que administra la conexión a la base de datos.
 - **`public static synchronized InstanceBbdd getInstance()`**:
-
 - El **método es `static synchronized`** para poder acceder a él sin tener que crear un objeto `Singleton` primero.
+
   - **`static`**: Las funciones y atributos son **estáticos** porque deben ser compartidos entre todos los objetos de la aplicación sin necesidad de instanciarlos. Esto hace que el Singleton pueda mantener una única conexión durante toda la ejecución.
   - **`synchronized`** asegura que el método sea seguro para hilos concurrentes, garantizando que solo una instancia del Singleton se cree incluso en aplicaciones multi-hilo.
 
@@ -255,7 +255,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public abstract class AbsGenericSQL<T, ID> {
-	
+
 	// Attributes para manejar el SQL y la info en la BBDD
     protected Connection conn; // Conexión a la BBDD
     protected PreparedStatement ps; // Quien prepara la sentencia y la ejecuta en el motor de la BBDD
@@ -316,7 +316,7 @@ import java.util.List;
 import modelo.javabean.Cliente;
 
 public interface IClienteDao extends IGenericCRUD<Cliente, String>{
-	
+
 	/* 
 	 * Métodos para manejar los clientes en específico 
 	 * Nos apoyamos en el 'extends' para adoptar el CRUD genérico
@@ -533,15 +533,15 @@ public class ClienteDaoImpl extends AbsGenericSQL<Cliente, String> implements IC
 			ois = new ObjectInputStream(fis);
 
 			while (true) {
-				
+			
 				try {
 					cli = (Cliente) ois.readObject();
 					aux.add(cli);
-					
+				
 				} catch (EOFException e) {
 					break;
 				}
-				
+			
 			}
 
 		} catch (Exception e) {
@@ -560,13 +560,12 @@ public class ClienteDaoImpl extends AbsGenericSQL<Cliente, String> implements IC
   - Se utilizan los **`?`** en las consultas SQL como **marcadores de posición**.
   - Los **marcadores de posición** se reemplazan con los valores correspondientes usando los métodos como `setString` y `setInt` de `PreparedStatement`.
   - Esos marcadores se setean después en un `aux` iterando `rs` dentro de un try-catch y accediendo a los datos con `ps.setString(1, obj.getNombre());`, por ejemplo.
-
 - **`ResultSet rs = ps.executeQuery()`**:
 
   - **`executeQuery()`** se usa para **consultas SELECT**.
   - Devuelve un **`ResultSet`** contiene el resultado de la consulta, y puedes iterar sobre él con `while(rs.next())`.
-
 - **`ps.executeUpdate()`**:
+
   - Se utiliza para **consultas INSERT, UPDATE y DELETE**, y devuelve el número de filas afectadas, lo cual es útil para comprobar si la operación fue exitosa.
   - Devuelve un **`Int`** que define las rowsAffected en la BBDD (las líneas que han sido modificadas al ejecutar la consulta).
 
