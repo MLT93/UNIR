@@ -114,7 +114,7 @@ package modelo.dao;
 
 import modelo.javabean.User;
 
-public interface IUserDao extends ICrudList<User> {
+public interface IUserDao extends ICrudList<User, String> {
     User findByUsername(String username);
 }
 ```
